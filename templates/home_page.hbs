@@ -1,0 +1,257 @@
+<script type="text/javascript">
+function loadPromotedFromCategoriesRecursive(url, category, article_count) {
+  $.getJSON(url, function(data) {
+    var family = data.articles,
+    max_article_count = (category.category == 'Knowledge base') ? 11 : 3;  
+    family.map(function(article) {
+      if (article.promoted == true && article_count < max_article_count) {
+        article_count++;
+        var listItem = createNode('li');
+        listItem.innerHTML = '<a href="'+article.html_url+'">'+article.name+'</a>';
+        $(listItem).addClass('promoted-articles-item ' + category.info.liClass);
+        $('#'+category.info.domId+' ul.promoted-articles').append(listItem);
+        if($('#'+category.info.domId).css('display') == 'none') {
+          $('#'+category.info.domId).show();
+        }
+                                                                        console.log("old function");
+      }
+    });
+    if(data.next_page != null) {
+      loadPromotedFromCategoriesRecursive(data.next_page, category, article_count);
+    }
+  });
+}
+  function loadPromoted (id) {
+  $.getJSON('/api/v2/help_center/'+$('html').attr('lang').toLowerCase()+'/categories/'+id+'/articles.json', function(data){
+   var articlesList = '';
+   $.each(data.articles, function(idx, itm){
+    if (itm.promoted==true) {
+                                                                        console.log("new function");
+     articlesList += '<li class="promoted-articles-item">';
+     articlesList += '<a href="'+itm.html_url+'">'+itm.name+'</a>';
+     articlesList += '</li>';
+    }
+   });
+   $('ul#listFrom'+id).html(articlesList);
+  });
+}
+</script>
+<section class="section visual-home">
+  <div class="container">
+      <div class="visual-inner">
+        <h1 class="visual-title">{{dc 'helpcenter-help_visual_title'}}</h1>
+        {{search submit=false instant=true class='search search-full'}}
+      </div>
+  </div>
+</section>
+<section class="directories-cards">
+  <div class="container">
+    <div class="row clearfix">
+      <div class="flex-container">
+    {{!#each categories}}
+      {{!#is id 360000005705}}
+      <div class="category-card hidden-xs col-sm-4">
+          <div class="cell-inner">
+            <div>
+              <a href="https://new-support.abbyy.com/hc/en-us/categories/360000005705" class="link-cards" title="Read articles" title-en="Read articles">
+              <div class="card-header">
+                <p><img src="{{asset 'Features-248v3-55x55.svg'}}"></p>
+              <h3>Knowledge base</h3>
+                </div>
+                <div class="link"><span class="link-emulate">{{dc 'helpcenter-read_articles'}} ›</span></div>
+                </a>
+            </div>
+          </div>
+      </div>
+      <div class="col-xs-12 visible-xs-block">
+        <a href="https://new-support.abbyy.com/hc/en-us/categories/360000005705" title="Read articles" title-en="Read articles">
+        <div class="cell-inner-xs">
+          <p><img src="{{asset 'Features-248v2-33x33.svg'}}"></p>
+          <h3>Knowledge base</h3>
+        </div>
+          </a>
+      </div>
+      {{!/is}}
+      {{!#is id 360000079589}}
+      <div class="category-card hidden-xs col-sm-4">
+        <div class="cell-inner">
+            <div>
+              <a href="https://new-support.abbyy.com/hc/en-us/categories/360000079589" class="link-cards" title="Read more" title-en="Read more">
+              <div class="card-header">
+                <p><img src="{{asset 'Features-108v3-55x55.svg'}}"></p>
+            <h3>Documentation</h3>
+                </div>
+            <div class="link"><span class="link-emulate">{{dc 'helpcenter-read_more'}} ›</span>
+              </div>
+                </a>
+            </div>
+          </div>
+      </div>
+      <div class="col-xs-12 visible-xs-block">
+        <a href="https://new-support.abbyy.com/hc/en-us/categories/360000079589" title="Read more" title-en="Read more">
+        <div class="cell-inner-xs">
+          <p><img src="{{asset 'Features-108v2-33x33.svg'}}"></p>
+          <h3>Documentation</h3>
+        </div>
+          </a>
+      </div>
+        {{!/is}}
+      {{!#is id 360000497619}}
+      <div class="category-card hidden-xs col-sm-4">
+        <div class="cell-inner">
+            <div>
+              <a href="https://new-support.abbyy.com/hc/en-us/categories/360000497619" class="link-cards" title="See more" title-en="See more">
+              <div class="card-header">
+                <p><img src="{{asset 'Features-259v3-55x55.svg'}}"></p>
+            <h3>Downloads</h3>
+                </div>
+            <div class="link"><span class="link-emulate">{{dc 'helpcenter-see_more'}} ›</span>
+            </div>
+                </a>
+              </div>
+          </div>
+      </div>
+      <div class="col-xs-12 visible-xs-block">
+        <a href="https://new-support.abbyy.com/hc/en-us/categories/360000497619" title="See more" title-en="See more">
+        <div class="cell-inner-xs">
+          <p><img src="{{asset 'Features-259v2-33x33.svg'}}"></p>
+          <h3>Downloads</h3>
+        </div>
+          </a>
+      </div>
+        {{!/is}}
+    {{!/each}}
+      </div>
+    </div>
+  </div>
+</section>
+<section id="reconstructionMessage" class="centered hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <p class="indent-mb-0"><a href="https://support.abbyy.com/hc/en-us/" class="text-link">英語版のHelp Centerでは、より多くの情報を公開中です ›</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="bugfixMessage" class="centered xs-pt-2 hidden">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="bugfix-message">
+        <p class="note">{{dc 'helpcenter-bugfix_message'}}</p>
+        <p><a id="bugfixLink" href="#">{{dc 'helpcenter-read_about_issue'}}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  {{#if promoted_articles}}
+<section class="trending-and-downloads" id="trendingAndDownloads">
+  <div class="container">
+    <div class="row">
+      <!--div class="col-md-8"-->
+      <div class="col-sm-12">
+        <div class="articles promoted-articles-container" id="knowledgeBasePromoted">
+            <h3>{{dc 'helpcenter-trending_topics'}}</h3>
+          <ul class="article-list promoted-articles">
+              {{#each promoted_articles}}
+                <li class="promoted-articles-item">
+                  <a href="{{url}}" class="test">{{title}}</a>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      <!--div class="col-md-4">
+        <div class="downloads promoted-articles-container" id="downloadsPromoted">
+          <h3>{{!dc 'helpcenter-downloads'}}</h3>
+          <ul class="article-list promoted-articles" id="listFrom360000497619"></ul>
+        </div>
+        <div class="documents promoted-articles-container" id="documentationPromoted">
+          <h3>{{!dc 'helpcenter-popular_documents'}}</h3>
+          <ul class="article-list promoted-articles" id="listFrom360000079589"></ul>
+        </div>
+      </div-->
+    </div>
+  </div>
+</section>
+{{/if}}
+<script>
+  $(function(){
+  var categories = [
+  	{'category': 'Knowledge base', 'info': {'id': '360000005705', 'domId': 'knowledgeBasePromoted', 'liClass': ''}}, 
+  	{'category': 'Documentation', 'info': {'id': '360000079589', 'domId': 'documentationPromoted', 'liClass': 'link-pdf-blue'}}, 
+  	{'category': 'Downloads', 'info': {'id': '360000497619', 'domId': 'downloadsPromoted', 'liClass': 'link-download-blue'}}],
+  isENLanguage = window.location.href.indexOf('hc/en-us') > -1,
+  isJALanguage = window.location.href.indexOf('hc/ja') > -1;
+  //$('#bugfixLink')[0].href = 'https:\/\/support.abbyy.com\/hc\/' + document.documentElement.lang.toLowerCase() + '\/articles\/360013088399';
+  //if(isENLanguage || isJALanguage) {
+  //$('#bugfixMessage').removeClass('hidden').addClass('visible');
+  //}
+  var bugFixUrl= '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/articles.json?label_names=FrontPageBanner';
+  if(isJALanguage) {
+          	$('#reconstructionMessage').removeClass('hidden').addClass('visible');
+  $('#trendingAndDownloads').removeClass('visible').addClass('hidden');
+  }
+  $.getJSON(bugFixUrl, function(data) {
+  if (data.count == 1) {
+  $('#bugfixLink')[0].href = data.articles[0].html_url;
+  $('#bugfixMessage').removeClass('hidden').addClass('visible');
+  }
+  if ($('#trendingAndDownloads').hasClass('hidden')) {
+  	if ($('#bugfixMessage').hasClass('visible')) {
+			$('#bugfixMessage').addClass('indent-pb-9');
+    } else if ($('#reconstructionMessage').hasClass('visible')) {
+  console.log("reconstr");
+			$('#reconstructionMessage').addClass('indent-pb-9');
+    }
+  } else if ($('#bugfixMessage').hasClass('visible')) {
+			$('#bugfixMessage').addClass('indent-pb-6 xs-pb-2');
+    } else if ($('#reconstructionMessage').hasClass('visible')) {
+			$('#reconstructionMessage').addClass('indent-pb-6');
+    }
+  });
+  categories.forEach(function(item) {
+  var url = '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/categories/' + item.info.id + '/articles.json',
+  article_count = 0;
+ if (!isJALanguage) {
+  //loadPromotedFromCategoriesRecursive(url, item, article_count);
+ }
+  });
+  var cards = $('.directories-cards > .container > .row > .flex-container > .category-card'),
+  cssClass = (cards.length == 3) ? 'col-sm-4' : (cards.length == 2) ? 'col-sm-6' : 'col-sm-12';
+  cards.each(function(){
+  	$(this).addClass(cssClass);
+  });
+  });
+</script>
+
+<section class="help-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<h2>{{dc 'helpcenter-customer_help_center'}}</h2>
+      </div>
+    </div>
+    <div class="row others">
+      <div class="col-sm-4">
+        {{#link 'new_request' class='button button-no-border button-mail-white submit-a-request'}}<img class="mail-white" src="{{asset 'Special-013w-33x33.svg'}}"><img class="mail-white-hover" src="{{asset 'Special-013w2-33x33.svg'}}"><p>{{dc 'helpcenter-submit_request'}}</p>{{/link}}
+      </div> 
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="/hc/articles/360004927400" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+    <div class="row manager_agent">
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-6">
+        <a href="/hc/articles/360004927400" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+  </div>
+</section>

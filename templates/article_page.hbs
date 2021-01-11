@@ -1,0 +1,534 @@
+<script type="text/javascript">
+function loadRPCard(articleLabels) {
+  var cardsArray = [],
+  relatedPL = productsByLabels('360001928739');
+  articleLabels.forEach(function(label){
+    
+      for(i = 0; i < relatedPL.length; i++) {
+        relatedPL[i].label.forEach(function(cardLabel) {
+          if(cardLabel.toLowerCase() == label.toLowerCase() && cardsArray.length < 1) {
+            cardsArray.push(relatedPL[i]);
+          }
+        });
+      }
+    });
+  if(cardsArray.length > 0) {
+    cardsArray.forEach(function(item) {
+        let div = document.createElement('div'),
+            description = (document.documentElement.lang == 'ru') ? item.card.descriptionRU : (document.documentElement.lang == 'ja') ? item.card.descriptionJA : item.card.description,
+            buttonUrl = (document.documentElement.lang == 'ru') ? item.card.buttonUrlRU : (document.documentElement.lang == 'ja') ? item.card.buttonUrlJA : item.card.buttonUrl,
+            buttonText = (document.documentElement.lang == 'ru') ? item.card.buttonTextRU : (document.documentElement.lang == 'ja') ? item.card.buttonTextJA : item.card.buttonText,
+  productFamilyNote = item.card.name.replace(new RegExp("ABBYY ",'g'),"");
+  $('#notSupportedProductName').text(productFamilyNote);
+        div.innerHTML = "<p class=\"rp-image\"><img src=\"" + item.card.image + "\"></p><h4>" + item.card.name + "</h4><div class=\"rp-description\"><p>" + description + "</p></div><p class=\"rp-button\"><a href=\"" + buttonUrl + "\" class=\"button button-red\" role=\"button\">" + buttonText + "</a></p>";
+        $(div).addClass("productCard");
+        $("#rp-cardXS").append($(div).clone());
+        $("#rp-card").append(div);
+    });
+  } else {
+    $("#relatedProducts").hide();
+    $("#relatedProductsXS").hide();
+  }
+}
+</script>
+<!-- Old community page -->
+{{#is article.id 360002058699}}
+<section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h1 class="">Community</h1>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="sub-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            <ol class="breadcrumbs">
+              <li title="ABBYY">
+                <a href="/hc/">Help center</a>
+              </li>
+              <li title="Community">Community</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="community-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="productCard">
+          <p class="rp-image"><img src="https://www.abbyy.com/media/15288/sdk-33x38.svg"></p>
+          <h3>OCR SDK</h3>
+          <div class="rp-description">
+            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p> -->
+          </div>
+          <div class="link-list">
+          	<a href="https://www.abbyy.technology">Technology Portal ›</a>
+            <a href="https://forum.ocrsdk.com/">Forum ›</a>
+        	</div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+      	<div class="productCard">
+          <p class="rp-image"><img src="https://www.abbyy.com/media/12697/flexicapture-33x33.svg"></p>
+          <h3>Data Capture</h3>
+          <div class="rp-description">
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>-->
+          </div>
+          <div class="link">
+          	<a href="http://www.capturedocs.com/">Forum ›</a>
+        	</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="productCard">
+          <p class="rp-image"><img src="https://www.abbyy.com/media/15287/retail-33x34.svg"></p>
+          <h3>Mobile</h3>
+          <div class="rp-description">
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>-->
+          </div>
+          <div class="link">
+            <a href="https://www.facebook.com/AbbyyMobile">Forum ›</a>
+        	</div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+      	<div class="productCard">
+          <p class="rp-image"><img src="https://theme.zdassets.com/theme_assets/2191466/a0829e124f09e95cb527ee8f3c3884c745fb22ff.svg" style="width: 95px;"></p>
+          <h3>ABBYY Company</h3>
+          <div class="rp-description">
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>-->
+          </div>
+          <div class="link">
+          	<a href="http://blog.abbyy.com/">Blog ›</a>
+        	</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END old community page-->
+{{else}}
+<!-- All labels page-->
+{{#is article.id 360001579019}}
+	<section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h1 class="">{{dc 'helpcenter-help_visual_title'}}</h1>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+<script>
+  if (window.location.href.indexOf('/ru/') > -1) {
+  	$('.visual-143').addClass('sm-paddings-visual');
+  }
+</script>
+<section class="all-labels">
+  <div class="container">
+    <div class="row">
+    	<div class="col-md-8 col-sm-12">
+        <h2 id="labelsListTitle">{{dc 'helpcenter-tagged_articles'}} </h2>
+        <div class="same-label-list" id="sameLabelList">
+          <ul class="labeled-articles" id="labels"></ul>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <h3>{{dc 'helpcenter-all_labels'}}</h3>
+        <div class="labelsList" id="labelsList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(function(){
+  var labels = [],
+  ulList = document.createElement('ul'),
+  sectionLabels = document.getElementById('labelsList');
+	allLabelsRecursive('/api/v2/help_center/articles.json');
+	const ul = document.getElementById('labels');
+	var articleIDs = [],
+	currentArticleID = {{article.id}},
+	labelList = document.getElementById('sameLabelList');
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return decodeURI(results[1]) || 0;
+    }
+	}
+  const label_name = $.urlParam('label_name').replace(/\+/g, ' ');
+  if(label_name != null) {
+  	$('#labelsListTitle')[0].innerHTML += '"' + label_name + '"';
+  }
+  articlesSameLabelRecursive('/api/v2/help_center/articles.json?label_names=' + label_name + '&locale=' + document.documentElement.lang.toLowerCase(), articleIDs);
+  });
+</script>
+<!-- END All labels page-->
+{{else}}
+<!-- Supported products page visual and breadcrumbs -->
+{{#is article.id 360004927400}}
+<section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h1 class="">{{article.title}}</h1>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="sub-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            <ol class="breadcrumbs">
+              <li title="ABBYY">
+                {{#link 'help_center'}}Help center{{/link}}
+              </li>
+              <li title="{{article.title}}">{{article.title}}</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- END Supported products page visual and breadcrumbs -->
+{{else}}
+
+  <section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 class="article-visual-title"></h1>
+        </div>
+        <div class="col-sm-6">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sub-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            {{breadcrumbs}}
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+{{/is}}
+<section class="article-container" id="article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-12" id="leftColumn">
+      	<article class="article">
+      		<div class="article-header">
+            {{#if article.internal}}<span class="icon-lock" title="{{t 'internal'}}"></span>{{/if}}
+        		<h2 title="{{article.title}}" class="article-title">{{article.title}}
+        		</h2>
+            {{#if article.labels}}
+          {{#each article.labels}}
+          {{#is identifier 'discontinued product'}}
+            <div class="note-notsupported"><p><strong>Please note:</strong> The product <span id="notSupportedProductName"></span>is discontinued</p></div>
+          {{/is}}
+          {{/each}}
+          {{/if}}
+						<div class="article-author">
+          		<div class="avatar article-avatar">
+            		<img src="{{article.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+                {{#if article.author.agent}}
+                <div class="icon-agent-container"><span class="icon-agent"></span></div>
+            		{{/if}}
+          		</div>
+          		<div class="article-meta">
+                {{#link 'user_profile' id=article.author.id}}
+              		{{article.author.name}}
+            		{{/link}}
+								<ul class="meta-group">
+              		{{#is article.created_at article.updated_at}}
+                  <li class="meta-data">{{date article.created_at timeago=true}}</li>
+                	{{else}}
+                		<li class="meta-data">{{date article.updated_at timeago=true}}</li>
+                		<!--<li class="meta-data">{{!t 'updated'}}</li> -->
+              		{{/is}}
+                  	{{#if comments}}
+            					<li>
+                      	<a href="#article-comments" class="article-comment-count">
+              						<span class="icon-comments"></span>
+              						{{article.comment_count}}
+            						</a>
+              				</li>
+          					{{/if}}
+            		</ul>
+          		</div>
+              <div class="subscribe-container"><div class="button-trans-blue-container button-sm-container">{{subscribe}}</div></div>
+      	</div>
+          </div>
+
+<div class="article-content">
+	<div class="article-body">{{article.body}}</div>
+	<div class="article-attachments">
+		<ul class="attachments">
+			{{#each attachments}}
+				<li class="attachment-item">
+					<a href="{{url}}" target="_blank">{{name}}</a>
+					<div class="attachment-meta meta-group">
+						<span class="attachment-meta-item meta-data">{{size}}</span>
+						<a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>
+          
+          {{#is article.id 360008526099}}
+          <script>
+          	$.ajax({
+        url: '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/articles/360008526099.json',
+        dataType: 'json',
+        success: function(data) {
+            var page_data = data.article.body;
+            var new_page_data = page_data.slice(4, -3);
+            $(".article-body").append(new_page_data);
+        }
+      });
+          </script>
+          {{/is}}
+          {{#with article}}
+          		<div class="article-votes">
+                <div class="votes-text">
+                  <p class="article-votes-question">{{t 'was_this_article_helpful'}}</p>
+                  <p class="article-votes-count">{{vote 'label' class='article-vote-label'}}</p>
+                </div>
+            		<div class="article-votes-controls" role='radiogroup'>
+              		{{vote 'up' role='radio' class='article-vote-up button-white-stroke button-white-purple-back button'}}
+              		{{vote 'down' role='radio' class='article-vote-down button-white-stroke button-white-purple-back button'}}
+            		</div>
+            	</div>
+        		{{/with}}
+						<div class="article-share">{{share}}</div>
+        		<div class="article-more-questions">
+              <p>
+          			{{request_callout}}
+              </p>
+        		</div>
+    </article>
+        {{#is article.comments_disabled false}}
+        <div class="article-comments" id="article-comments">
+        		<div class="comments">
+          		<div class="comment-overview">
+            		<h4 class="comment-heading">
+              		{{t 'comments'}}
+            		</h4>
+            		<p class="comment-callout">{{t 'comments_count' count=article.comment_count}}</p>
+            		{{#if comments}}
+              		<div class="dropdown comment-sorter">
+                		<a class="dropdown-toggle">{{t 'sort_by'}}</a>
+                		<span class="dropdown-menu" role="menu">
+                  		{{#each comment_sorters}}
+                    		<a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
+                  		{{/each}}
+                		</span>
+              		</div>
+            		{{/if}}
+          		</div>
+
+          		<ul id="comments" class="comment-list">
+            		{{#each comments}}
+              		<li id="{{anchor}}" class="comment">
+                		<div class="comment-wrapper">
+                  		<div class="comment-info">
+                        <div class="avatar comment-avatar">
+                        		<img src="{{author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+                      	</div> 
+                        <div class="comment-block">
+                          <div class="comment-author">
+                            <div class="comment-meta">
+                              <span title="{{author.name}}">
+                                {{#link 'user_profile' id=author.id}}
+                                  {{author.name}}
+                                {{/link}}
+                              </span>
+                              <ul class="meta-group">
+                                {{#if editor}}
+                                  <li class="meta-data">{{date edited_at timeago=true}}</li>
+                                  <li class="meta-data">{{t 'edited'}}</li>
+                                {{else}}
+                                  <li class="meta-data">{{date created_at timeago=true}}</li>
+                                {{/if}}
+                              </ul>
+                            </div>
+                            <div class="comment-labels">
+                              {{#with ticket}}
+                                <a href="{{url}}" target="_zendesk_lotus" class="status-label escalation-badge">
+                                  {{t 'request'}}{{id}}
+                                </a>
+                              {{/with}}
+                              {{#if pending}}
+                                <span class="comment-pending status-label status-label-pending">{{t 'pending_approval'}}</span>
+                              {{/if}}
+                            </div>
+                          </div>
+                          <div class="comment-body">{{body}}</div>
+                          <div class="comment-actions-container">
+                          <div class="comment-vote vote" role='radiogroup'>
+                            {{vote 'down' role='radio' class='vote-down' selected_class='vote-voted'}}
+                            {{vote 'sum' class='vote-sum'}}
+                            {{vote 'up' role='radio' class='vote-up' selected_class='vote-voted'}}
+                          </div>
+                          <div class="comment-actions actions"><div class="dropdown">{{actions}}</div></div>
+                          </div>
+                  			</div>
+                  		</div>
+
+                		</div>
+              		</li>
+            		{{/each}}
+          		</ul>
+							{{pagination}}
+							{{#form 'comment' class='comment-form'}}
+            		<div class="avatar comment-avatar">{{user_avatar class='user-avatar'}}</div>
+            		<div class="comment-container">
+              		{{wysiwyg 'body'}}
+              		<div class="comment-form-controls">
+                		{{input type='submit' class="button button-blue"}}
+              		</div>
+            		</div>
+          		{{/form}}
+							<p class="comment-callout">{{comment_callout}}</p>
+        		</div>
+        </div>
+        {{/is}}
+        <div class="recently-viewed" id="recentlyViewed">
+          <h3>{{dc 'helpcenter-recently_viewed'}}</h3>
+          {{recent_articles}}
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12" id="rightColumn">
+        <div class="right-fixed-column hidden-sm hidden-xs" id="rightFixedColumn">
+          <div class="same-label-list hidden" id="sameLabelList">
+              {{related_articles}}
+            </div>
+         <div class="related-product">
+            <div id="relatedProducts">
+              <h3>{{dc 'helpcenter-related_product'}}</h3>
+              <div class="related-product-card" id="rp-card"></div>
+            </div>
+          </div>
+				</div>
+        <div class="visible-sm-block visible-xs-block" id="rightFixedColumnXS">
+          <!-- related to labels articles list
+            <div class="same-label-list" id="sameLabelList">
+               <h3>Related articles</h3>
+              <ul class="labeled-articles" id="labels"></ul>
+              {{related_articles}}
+            </div>-->
+          <div class="same-label-list" id="sameLabelList">
+              {{related_articles}}
+            </div>
+          
+          <!--<script>
+            $('#sameLabelList ul > li > a').each(function(){
+            	if(($(this).text().indexOf('[Service article]') > -1) || ($(this).text().indexOf('Filter by label') > -1) || ($(this).text().indexOf('Фильтрация по тэгу') > -1)) {
+            		$(this).closest('li').hide();
+            	} 
+            });
+          </script>-->
+          
+          <div class="related-product">
+            <div id="relatedProductsXS">
+              <h3>Related product</h3>
+              <div class="related-product-card" id="rp-cardXS"></div>
+            </div>
+          </div>
+				</div>
+          <script>  
+            const ul = document.getElementById('labels');
+            const ulXS = document.getElementById('labelsXS');
+            var labels = [],
+            articleIDs = [],
+            count = 0,
+            currentArticleID = {{article.id}};
+            {{#if article.labels}}
+            {{#each article.labels}} labels.push("{{identifier}}");{{/each}}
+            {{/if}}
+            /*{{#each article.labels}}    
+              sameLabelArticles_Block('{{identifier}}', articleIDs, currentArticleID);
+            {{/each}}*/
+            $('#sameLabelList ul > li').each(function(){
+            	if($(this).css('display') != 'none') {
+            	$('#sameLabelList').removeClass('hidden');
+            }
+            });
+            loadRPCard(labels);
+            if ($("#rp-card").children().length == 0 && ($("#sameLabelList").children().length == 0 || $("#sameLabelList").hasClass('hidden'))) 						{
+              $("#leftColumn").removeClass("col-md-8");
+              $("#rightColumn").hide();
+            }
+            if($('.article-more-questions p').innerHTML == null) {
+            	$('.article-more-questions').css('display', 'none');
+            }
+          </script>
+        
+      </div>
+    </div>
+  </div>
+</section>
+{{/is}}
+{{/is}}
+  <script>
+    deleteSpecialArticles();
+  </script>
+<section class="help-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<h2>{{dc 'helpcenter-customer_help_center'}}</h2>
+      </div>
+    </div>
+    <div class="row others">
+      <div class="col-sm-4">
+        {{#link 'new_request' class='button button-no-border button-mail-white submit-a-request'}}<img class="mail-white" src="{{asset 'Special-013w-33x33.svg'}}"><img class="mail-white-hover" src="{{asset 'Special-013w2-33x33.svg'}}"><p>{{dc 'helpcenter-submit_request'}}</p>{{/link}}
+      </div> 
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+    <div class="row manager_agent">
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,267 @@
+<script type="text/javascript">
+function loadProductsTopics() {
+  /*var productFamilyCards;
+  $.ajax({
+    url: '/hc/articles/360001928739',
+    type:'GET',
+    success: function(data) {
+      var div = document.createElement('div'),
+      content = $(div).append(data).find('#productsAndLabels');
+      productFamilyCards = content[0].innerHTML;
+    }
+  })
+  .then(function(){*/
+  $.getJSON('/api/v2/community/topics.json', function(data) {
+  /*function tojson(toPrint) {
+  return new Function("return " + toPrint + ";")();
+  }*/
+  //var productFamilyCardsJSON = tojson(productFamilyCards);
+    var columnsCount = 1,
+        topicsFamily = data.topics.sort(function(a, b) {
+    			return a.position - b.position;
+				});
+    productFamilyCards.forEach(function(productFamily) {
+      var familyName = document.createElement('h3'),
+            familyIcon = document.createElement('img'),
+          	tFamilyList = document.createElement('ul');
+          familyName.innerHTML = productFamily.card.family.replace(new RegExp("ABBYY ",'g'),"");
+      $(familyIcon).attr('src', productFamily.card.image).attr('alt', productFamily.card.name);
+      topicsFamily.map(function(topic) {
+        if (topic.name.indexOf(familyName.innerHTML) == 0) {
+          var productName = true;
+          if ((familyName.innerHTML.indexOf('FineReader') == 0 || familyName.innerHTML.indexOf('FlexiCapture') == 0) && familyName.innerHTML.indexOf(' ') == -1) {
+          if (topic.name.indexOf('FineReader Pro for Mac') > -1 || topic.name.indexOf('FlexiCapture for Invoices') > -1 || topic.name.indexOf('FineReader Engine') > -1 || topic.name.indexOf('FlexiCapture Engine') > -1 || topic.name.indexOf('FlexiCapture SDK') > -1 || topic.name.indexOf('FlexiCapture Cloud API') > -1 || topic.name.indexOf('FineReader Server') > -1) {
+            productName = false;
+          }
+        }
+          if (productName) {
+          var topicName = topic.name.replace(new RegExp(familyName.innerHTML + " ",'g'),"");
+          var tFamilyListItem = document.createElement('li');
+          tFamilyListItem.innerHTML = "<a href=\"https://new-support.abbyy.com/hc/" + document.documentElement.lang.toLowerCase() + "/community/topics/" + topic.id + "\">" + topicName + "</a>";
+                $(tFamilyList).addClass('article-list').append(tFamilyListItem);
+  console.log("tFamilyList =", tFamilyList);
+          }
+        }
+      });
+      if (tFamilyList.childNodes.length > 0) {
+            if(columnsCount % 3 == 0 && columnsCount > 0) {
+              var row = document.createElement('div');
+              $(row).addClass('clearfix visible-md-block visible-lg-block');
+          		$('#topicFamilyLists').append(row);
+            }
+        if(columnsCount % 2 == 0 && columnsCount > 0) {
+              var row = document.createElement('div');
+              $(row).addClass('clearfix visible-sm-block');
+          		$('#topicFamilyLists').append(row);
+            }
+          	var col4 = document.createElement('div'),
+          internalDiv = document.createElement('div'),
+          iconContainer = document.createElement('p'),
+          familyDescription = document.createElement('div');
+          $(iconContainer).addClass('product-image').append(familyIcon);
+          $(familyDescription).addClass('family-description').append(familyName).append(tFamilyList);
+          	$(internalDiv).addClass('section-content').append(iconContainer).append(familyDescription);
+          $(col4).addClass('col-md-4 col-sm-6').addClass('section-block').append(internalDiv)
+          $('#topicFamilyLists').append(col4);
+          columnsCount += 1;
+            }
+    });
+    if(columnsCount % 3 == 0 && columnsCount > 0) {
+    	var row = document.createElement('div');
+      $(row).addClass('clearfix visible-md-block visible-lg-block');
+      $('#topicFamilyLists').append(row);
+    }
+    if(columnsCount % 2 == 0 && columnsCount > 0) {
+    	var row = document.createElement('div');
+      $(row).addClass('clearfix visible-sm-block');
+      $('#topicFamilyLists').append(row);
+    }
+    var col4 = document.createElement('div');
+    col4.innerHTML = "<div class=\"col-md-4 col-sm-6 section-block\"><div class=\"section-content\"><p class=\"product-image\"><img src=\"https://theme.zdassets.com/theme_assets/2191466/48cf2e7a27efbf17c5f9a76d20ce44eb519019e5.svg\" alt=\"Helpfull links\"></p><div class=\"family-description\"><h3>Helpful links</h3><ul class=\"article-list\"><li><a href=\"https://new-support.abbyy.com/hc/"+ document.documentElement.lang.toLowerCase() + "/articles/360013578499\">How to set up a Support account</a></li><li><a href=\"https://new-support.abbyy.com/hc/"+ document.documentElement.lang.toLowerCase() + "/articles/360013578519\">How to contact ABBYY Support</a></li><li><a href=\"https://new-support.abbyy.com/hc/"+ document.documentElement.lang.toLowerCase() + "/articles/360013578539\">Where to find KB content</a></li></ul></div></div></div>";
+  $("#welcome-block").removeClass('hidden');
+    $('#topicFamilyLists').append(col4);
+  });
+  //});
+  
+}
+</script>
+<section class="visual-143">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h1>{{t 'community'}}</h1>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        {{search submit=false scoped=true instant=true}}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sub-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <nav>
+          {{breadcrumbs}}
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="community-posts-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<div class="header-item-left dropdown">
+          <div class="dropdown-toggle">
+            <h2>{{t 'community_topics'}}</h2>
+          </div>
+          <span class="dropdown-menu" role="menu">
+            {{#link 'topics' role='menuitem' selected='true'}}{{t 'show_topics'}}{{/link}}
+            {{#link 'posts' role='menuitem'}}{{t 'show_all_posts'}}{{/link}}
+          </span>
+        </div>
+        <div class="header-item-right"><div class="button-list">{{link 'new_post' role='button' class='button-plus-white'}}</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sections-container indent-pt-2 topics-container">
+<div class="container">
+  <div class="row" id="topicFamilyLists">
+  {{#unless topics}}
+        <div class="col-sm-12">
+          <p>{{t 'no_content'}}</p>
+        </div>
+  	{{/unless}}
+    <div id="welcome-block" class="col-md-4 col-sm-6 section-block hidden">
+      <div class="section-content">
+        <p class="product-image">
+          <img src="https://theme.zdassets.com/theme_assets/2191466/8b9a0d5259bb4f1d5e14489413c6050b740734a6.svg" alt="Welcome">
+        </p>
+        <div class="family-description">
+          <h3>Welcome</h3>
+          <ul class="article-list">
+            <li>
+              <a id="startHere" href="#">Start here if you’re new</a>
+            </li>
+            <li>
+              <a id="participate" href="#">How to participate in the forum</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+<script type="text/javascript">
+  $('#startHere')[0].href = "https://new-support.abbyy.com/hc/" + document.documentElement.lang.toLowerCase() + "/community/topics/360000695260";
+  $('#participate')[0].href = "https://new-support.abbyy.com/hc/" + document.documentElement.lang.toLowerCase() + "/community/topics/360000747239";
+  loadProductsTopics();
+</script>
+<!--<section class="community-blocks">
+  <div class="container">
+    {{#unless topics}}
+      <div class="row">
+        <div class="col-sm-12">
+          <p>{{t 'no_content'}}</p>
+        </div>
+      </div>
+  	{{/unless}}
+
+    <div class="blocks topics">
+      <ul class="blocks-list topics-list">
+        {{#each topics}}
+          <li class="blocks-item topics-item {{#if internal}}blocks-item-internal{{/if}}">
+             <a href="{{url}}" class="blocks-item-link">
+               <h4 class="blocks-item-title">
+                 {{name}}{{#if internal}}<span class="icon-lock" title="{{t 'internal'}}"></span>{{/if}}
+               </h4>
+               <p class="blocks-item-description">{{excerpt description}}</p>
+               <ul class="meta-group">
+                 <li class="meta-data">{{t 'post_count' count=post_count}}</li>
+                 <li class="meta-data">{{t 'follower_count' count=follower_count}}</li>
+               </ul>
+             </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+  {{pagination}}
+  </div>
+</section>-->
+<section class="activity-featured-lists">
+  <div class="container">
+    <div class="row">
+      {{#if help_center.community_enabled}}
+      	{{#if featured_posts}}
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="community-activity activity">
+              {{recent_activity scope='community'}}
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="community-featured-posts">
+              <div class="featured-header">
+              	<h3>{{t 'featured_posts'}}</h3>
+              	<span class="status-label status-label-featured">{{t 'featured'}}</span>
+              </div>
+              <ul class="promoted-articles">
+                {{#each featured_posts}}
+                  <li class="promoted-articles-item">
+                    <a href="{{url}}">{{title}}</a>
+                    <ul class="meta-group">
+                      <li class="meta-data">
+                      {{#link 'user_profile' id=author.id}}
+                        {{author.name}}
+                      {{/link}}
+                    </li>
+                    <li class="meta-data">{{date created_at timeago=true}}</li>
+                    </ul>
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+      	{{else}}
+      		<div class="col-sm-12">
+            <div class="community-activity activity">
+              {{recent_activity scope='community'}}
+            </div>
+          </div>
+      	{{/if}}
+      {{else}}
+      	{{#if featured_posts}}
+      		<div class="col-sm-12">
+            <div class="community-featured-posts">
+              <h3>{{t 'featured_posts'}}</h3>
+              <ul class="promoted-articles">
+                {{#each featured_posts}}
+                  <li class="promoted-articles-item"><a href="{{url}}">{{title}}</a></li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+      	{{else}}
+      <script>
+      $('.activity-featured-lists').css('display', 'none');
+      </script>
+      	{{/if}}
+      {{/if}}
+    </div>
+  </div>
+</section>
+<section class="community-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>{{t 'suggest_new_post'}}</h4>
+        {{link 'new_post' role='button' class='button-white-stroke button-white-purple-back button-plus-purple'}}
+      </div>
+    </div>
+  </div>
+</section>

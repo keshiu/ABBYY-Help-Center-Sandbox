@@ -1,0 +1,144 @@
+<section class="visual-143">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h1>{{section.name}}</h1>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        {{search submit=false instant=true}}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sub-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <nav>
+          {{breadcrumbs}}
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-content section-list-article indent-pt-3">
+	<div class="container">
+		<div class="row">
+      <div class="col-sm-12">
+        <div class="indent-pb-4">
+        <div class="section-page-header">
+          <div class="indent-mr-2">
+            <h2>{{section.name}}</h2>
+          </div>
+        <div><div id="custom-subscribe-button" class="button-trans-blue-container button-arrow-down-circle-blue-container">{{subscribe}}</div></div>
+          </div>
+        {{#if section.description}}<div><p class="page-header-description">{{section.description}}</p></div>{{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{#if section.sections}}
+<section class="sections-container indent-p-0">
+	<div class="container" id="sections-container">
+    {{#each section.sections}}
+    <div class="col-sm-6 section-block">
+      <div class="section-content">
+      <h3><a href="{{url}}">{{name}}</a></h3>
+      {{#if articles}}
+      <ul class="article-list">
+        {{#each articles}}
+        <!-- <li {{#if promoted}} class="article-promoted" {{/if}}>
+          {{#if promoted}}
+          <span data-title="{{t 'promoted'}}">★</span>
+          {{/if}} -->
+        <li class="article-list-item">
+          <a href="{{url}}">{{title}}</a>
+        </li>
+        {{/each}}
+      </ul>
+      {{#if more_articles}}
+      <a href="{{url}}" class="see-all-articles button button-sm button-trans-blue">
+        {{t 'show_all_articles' count=article_count}}
+      </a>
+      {{/if}}
+      {{else}}
+      <i class="section-empty">
+        <a href="{{url}}">{{t 'empty'}}</a>
+      </i>
+      {{/if}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>
+{{/if}}
+
+<section class="section-content section-list-article indent-pt-0 indent-pb-3">
+	<div class="container">
+		<div class="row">
+      <div class="col-sm-12">
+        {{#if section.articles}}
+        <div class="indent-pb-5">
+        <ul class="article-list">
+          {{#each section.articles}}
+            <!-- <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
+              {{#if promoted}}
+                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+              {{/if}} -->
+          <li class="article-list-item">
+              <a href="{{url}}" class="article-list-link">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+      {{!else}}
+       <!-- <i class="section-empty">
+          <a href="{{!section.url}}">{{!t 'empty'}}</a>
+        </i>-->
+      {{pagination}}
+      </div>
+        {{/if}}
+    </div>
+  </div>
+  </div>
+</section>
+
+<script>
+  $(function(){
+  $('#custom-subscribe-button .dropdown-toggle').each(function(){
+  	if ($(this).attr('aria-selected')=='true') {
+			$(this)[0].innerHTML = '{{dc 'helpcenter-subscribed_button_text'}}';
+    }
+  });
+  loadReorderedListOfSection();
+  });
+</script>
+<section class="help-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<h2>{{dc 'helpcenter-customer_help_center'}}</h2>
+      </div>
+    </div>
+    <div class="row others">
+      <div class="col-sm-4">
+        {{#link 'new_request' class='button button-no-border button-mail-white submit-a-request'}}<img class="mail-white" src="{{asset 'Special-013w-33x33.svg'}}"><img class="mail-white-hover" src="{{asset 'Special-013w2-33x33.svg'}}"><p>{{dc 'helpcenter-submit_request'}}</p>{{/link}}
+      </div>
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+    <div class="row manager_agent">
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+  </div>
+</section>

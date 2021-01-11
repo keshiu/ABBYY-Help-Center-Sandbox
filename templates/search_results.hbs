@@ -1,0 +1,126 @@
+<section class="visual-143">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h1>{{t 'search_results'}}</h1>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        {{search submit=false instant=true}}
+        <p class="search-visual-description">{{t 'results' query=query count=results_count}}</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sub-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <nav>
+          {{breadcrumbs}}
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="search-container search-results">
+	<div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-xs-12">
+<div class="search-results-sidebar">
+     {{#if help_center.community_enabled}}
+        <div class="filters-in-section section-content">
+          <h3 class="sidenav-title search-results-subheading">{{t 'filter_by_type'}}</h3>
+          <ul class="article-list search-results-list">
+            {{#each filters}}
+              <li class="article-list-item">
+                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} ({{count}})</a>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/if}}
+      {{#if subfilters}}
+        <div class="filters-in-section section-content">
+          {{#is current_filter.identifier 'knowledge_base'}}
+            <h3 class="sidenav-title search-results-subheading">{{t 'filter_by_category'}}</h3>
+          {{/is}}
+          {{#is current_filter.identifier 'community'}}
+            <h3 class="sidenav-title search-results-subheading">{{t 'filter_by_topic'}}</h3>
+          {{/is}}
+          <ul class="article-list search-results-list">
+            {{#each subfilters}}
+              <li class="article-list-item">
+                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} ({{count}})</a>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  <div class="col-sm-8 col-xs-12">
+    <div class="search-results-column">
+    {{#if results}}
+            <ul class="search-results-list">
+              {{#each results}}
+                <li class="search-result-list-item search-result result-{{type}}">
+                    <a href="{{url}}" class="results-list-item-link search-result-link">{{title}}{{#if vote_sum}}
+                        <span class="search-result-votes">{{vote_sum}}</span>
+                      {{/if}}
+                      {{#if comment_count}}
+                        <span class="search-result-meta-count">
+                          {{comment_count}}
+                        </span>
+                      {{/if}}</a>
+                  <article>
+                    <ul class="meta-group">
+                      <li>
+                        <ol class="breadcrumbs search-result-breadcrumbs">
+                          {{#each path_steps}}
+                            <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
+                          {{/each}}
+                        </ol>
+                      </li>
+                      <li class="meta-data">{{#link 'user_profile' id=author.id}}
+                        {{author.name}}
+                      {{/link}}</li>
+                      <li class="meta-data">{{date created_at timeago=true}}</li>
+                    </ul>
+                    <div class="search-results-description">{{text}}</div>
+                  </article>
+                </li>
+              {{/each}}
+            </ul>
+      {{pagination}}
+          {{else}}
+            <p>
+              {{t 'no_results_unified'}}
+              {{#link 'help_center'}}
+                {{t 'browse_help_center'}}
+              {{/link}}
+            </p>
+          {{/if}}
+  </div>
+      </div>
+  </div>
+  </div>
+  </section>
+<script>
+if($('li.search-result a:contains("Service article")').length > 0)
+  {
+    $('li.search-result a:contains("Service article")').hide();
+    $('li.search-result a:contains("Service article")').next().hide();
+    $('li.search-result a:contains("Service article")').next().next().hide();
+  }
+  //removing service breadcrumbs from the list
+  $('.search-result-breadcrumbs li').each(function(){
+  	if(($(this).attr('title') == "Service category")) {
+  		$(this).closest('.search-result-breadcrumbs').hide();
+  }
+  });
+  $('.filters-in-section li.article-list-item a').each(function(){
+  	if(($(this).text().indexOf("Service category")) > -1) {
+  		$(this).closest('.article-list-item').hide();
+  }
+  });
+</script>

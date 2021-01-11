@@ -1,0 +1,59 @@
+<script>
+  //adding popup multilanguage title
+  $(window).on('load', function(e){
+  	$('#popupBlock h3').text("{{dc 'helpcenter-thank-you-popup'}}");
+  });
+</script>
+
+<section class="footer-map" style="background-color:#323c46">
+	<div class="container">
+		<div class="row clearfix">
+			<div class="col-md-4 col-sm-6 col-xs-12">
+				<div>
+					<div class="map-content">
+						<p class="logo-img"><img src="{{asset 'logo_white.png'}}"></p>
+						<p>{{dc 'helpcenter-about_abbyy'}}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 col-sm-6 col-xs-12"><div></div></div>
+		</div>
+	</div>
+</section>
+
+<footer>
+  <nav class="footer-links">
+    <div class="container">
+      <div class="footer-language-selector">
+      	{{#if alternative_locales}}
+              <div class="dropdown language-selector">
+                <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+                  {{current_locale.name}}
+                </a>
+                <span class="dropdown-menu dropdown-menu-end dropdown-menu-caret dropdown-menu-top" role="menu">
+                  {{#each alternative_locales}}
+                    <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                      {{name}}
+                    </a>
+                  {{/each}}
+                </span>
+              </div>
+            {{/if}}
+      </div>
+      <ul class="separated-link-bar">
+        <li><a href="{{dc 'privacy_link'}}" target="_self" title="Privacy" ga-class="footer">{{dc 'helpcenter-privacy'}}</a></li>
+        <li class="showOnlyForUsa" style="display: none;"><a href="https://www.abbyy.com/abbyydonotsell/" title="Do Not Sell" target="blank">Do Not Sell</a></li>
+        <li><a href="https://www.abbyy.com/cookie-policy/" target="_self" title="Cookie Policy" ga-class="footer">{{dc 'helpcenter-cookie_policy'}}</a></li>
+        <li><a href="javascript: Cookiebot.renew();" target="_self" title="Cookie Management" ga-class="footer">{{dc 'helpcenter-cookie_management'}}</a></li>
+        <li><a href="https://www.abbyy.com/smua/" target="_self" title="Software Maintenance and Upgrade Assurance Terms" ga-class="footer">SMUA</a></li>
+        <li><a href="{{dc 'helpcenter-abbyy_website_url'}}" target="_self" title="ABBYY corporate website" class="external-link-white" ga-class="footer">{{dc 'helpcenter-abbyy_website'}}</a></li>
+      </ul>
+      <div class="copyright">© <span id="currentYear"></span> {{dc 'helpcenter-all_rights_reserved'}}</div>
+    </div>
+  </nav>
+</footer>
+<script type="text/javascript">
+  var today = new Date(),
+  year = today.getFullYear();
+  $("#currentYear").text(year);
+</script>

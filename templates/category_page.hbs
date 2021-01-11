@@ -1,0 +1,192 @@
+<section class="visual-143">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h1>{{category.name}}</h1>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        {{search submit=false instant=true}}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sub-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <nav>
+          {{breadcrumbs}}
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+{{#is category.id 360000005705}}
+<section class="indent-pt-3 indent-pb-2">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+<div><a role="button" title="{{dc 'helpcenter-all_products'}}" id="allProductsLink" href="/hc/articles/360011855279" class="button button-blue button-long">{{dc 'helpcenter-all_products'}}</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+var allProductsURL = '/hc/' + document.documentElement.lang.toLowerCase() + '/articles/360011855279';
+  $('#allProductsLink').attr('href', allProductsURL);
+</script>
+{{/is}}
+<section class="sections-container indent-pt-3">
+	<div class="container" id="sections-container">
+    {{#each sections}}
+    <div class="col-sm-6 section-block">
+      <div id="{{name}}" class="section-content">
+      <h3>
+        <!-- {{!#if internal}}
+        <span class="visibility-internal" data-title="{{!t 'internal'}}">
+          <span class="visibility-internal-icon"></span>
+        </span>
+        {{!/if}} -->
+        <a title="{{name}}" href="{{url}}">{{name}}</a>
+      </h3>
+        {{#if articles}}
+      <ul class="article-list only-article-list">
+        {{#each articles}}
+        <!-- <li {{!#if promoted}} class="article-promoted" {{!/if}}>
+          {{!#if promoted}}
+          <span data-title="{{!t 'promoted'}}">★</span>
+          {{!/if}} -->
+        <li class="article-list-item hidden">
+          <a title="{{title}}" href="{{url}}">{{title}}</a>
+        </li>
+        {{/each}}
+      </ul>
+      {{#if more_articles}}
+      <a title="{{dc 'helpcenter-see_all_articles'}}" href="{{url}}" class="see-all-articles button button-sm button-trans-blue hidden more-articles-button">
+        {{!t 'show_all_articles' count=article_count}}
+        {{t 'show_all_articles'}}
+      </a>
+      {{/if}}
+      {{/if}}
+        {{#if sections}}
+        <ul class="article-list section-list">
+        	{{#each sections}}
+          <li class="article-list-item link-arrow-right hidden">
+            <a title="{{name}}" href="{{url}}">{{name}}</a>
+        	</li>
+        	{{/each}}
+        </ul>
+        {{/if}}
+      {{#if sections}}
+        <a title="{{dc 'helpcenter-see_all_articles'}}" href="{{url}}" class="see-all-articles button button-sm button-trans-blue hidden see-all-common">{{dc 'helpcenter-see_all_articles'}}</a>
+        {{else}}
+        {{#if articles}}
+        {{else}}
+      <i class="section-empty">
+        <a title="empty" href="{{url}}">{{t 'empty'}}</a>
+      </i>
+        {{/if}}
+        {{/if}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>
+<script>
+  $(function(){
+  $('.section-content').each(function(){
+  var x = ($(this).children('.only-article-list').length != 0) ? $(this).closest('.section-content').children('.only-article-list')[0].children.length : 0,
+  y = 0,
+  button = $(this).closest('.section-content').children('.more-articles-button').length;
+  if ($(this).children('.section-list').length != 0) {
+  	$(this).children('.section-list').each(function() {
+  		y = $(this)[0].children.length;
+  		if ((x + y) > 6) {
+  			if (x < 6) {
+        	y = 6 - x;
+        } else if (y < 6) {
+  				x = 6 - y;
+  			} else {
+  				x = 3;
+  				y = 3;
+  			}
+  			$(this).next().removeClass('hidden');
+  		}
+  	});
+  } else if ($(this).children('.more-articles-button').length != 0) {
+  	$(this).children('.more-articles-button').removeClass('hidden');
+  }
+  let xShow = 0;
+  while (xShow < x) {
+  	var articles = $(this).children('.only-article-list')[0];
+    $(articles.children[xShow]).removeClass('hidden');
+    if(xShow == x - 1) {
+    	$(articles.children[xShow]).addClass('indent-mb-0');
+    }
+    xShow++;
+  }
+  let yShow = 0;
+  while (yShow < y) {
+  	var sections = $(this).children('.section-list')[0];
+    $(sections.children[yShow]).removeClass('hidden');
+  	if(yShow == y - 1) {
+    	$(sections.children[yShow]).addClass('indent-mb-0');
+    }
+    yShow++;
+  }
+  });
+  loadReorderedListOfSection();
+  });
+</script>
+
+<!-- DRAFT documentation -->
+<!-- {{#is category.id 360000079589}}
+  <script>
+    loadProductBlocksCategoryPage();
+    var categoryId = 360000079589;
+  	loadSectionsFormCategory(categoryId);
+  </script>
+{{/is}} -->
+
+<!-- Hidden for now -->
+<!-- <section class="how-to">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="link-list">
+          <a href="#" class="button button-no-border button-register">How to register</a>
+          <a href="#" class="button button-no-border button-activate">How to activate</a>
+        </div>
+      </div>
+  	</div>
+  </div>
+</section>-->
+
+<section class="help-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<h2>{{dc 'helpcenter-customer_help_center'}}</h2>
+      </div>
+    </div>
+    <div class="row others">
+      <div class="col-sm-4">
+        {{#link 'new_request' class='button button-no-border button-mail-white submit-a-request'}}<img class="mail-white" src="{{asset 'Special-013w-33x33.svg'}}"><img class="mail-white-hover" src="{{asset 'Special-013w2-33x33.svg'}}"><p>{{dc 'helpcenter-submit_request'}}</p>{{/link}}
+      </div> 
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+    <div class="row manager_agent">
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+  </div>
+</section>

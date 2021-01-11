@@ -1,0 +1,112 @@
+<section class="visual-143">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <h1>{{t 'community'}}</h1>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        {{search submit=false scoped=true}}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sub-nav">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <nav>
+          {{breadcrumbs}}
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="new-post-container">
+	<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>{{t 'what_is_your_post_about'}}</h2>
+        <div class="form">
+          {{#form 'post' class='new_community_post request-form'}}
+            <div class="form-field {{#required 'title'}} required {{/required}}">
+              {{label 'title'}}
+              {{input 'title' autofocus=true}}
+              {{#validate 'title'}}
+                <div class="notification notification-error notification-inline">
+                  {{error 'title'}}
+                </div>
+              {{/validate}}
+            </div>
+
+            {{suggestion_list class='suggestion-list'}}
+
+            <div class="form-field {{#required 'details'}} required {{/required}}">
+              {{label 'details'}}
+              {{wysiwyg 'details'}}
+              {{#validate 'details'}}
+                <div class="notification notification-error notification-inline">
+                  {{error 'details'}}
+                </div>
+              {{/validate}}
+            </div>
+
+            <div class="form-field {{#required 'topic'}} required {{/required}}">
+              {{label 'topic'}}
+              {{select 'topic'}}
+              {{#validate 'topic'}}
+                <div class="notification notification-error notification-inline">
+                  {{error 'topic'}}
+                </div>
+              {{/validate}}
+            </div>
+
+            <footer class="footer-button-bar">
+              {{input type='submit'}}
+              {{#link 'community' class="button button-trans-blue"}}{{dc 'helpcenter-cancel'}}{{/link}}
+          </footer>
+          {{/form}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+(function ($) {
+	var aliases = {
+		'topic': 'community_post_topic_id'
+	}
+	var parsedQueryString = function () {
+		var segments = window.location.search.substr(1).replace(/\+/g, ' ').split('&'),
+			parsed = {};
+		if (!segments) return parsed;
+		for (var i = 0, count = segments.length; i < count; i++) {
+			var parts = segments[i].split('='),
+				key = parts.shift(),
+				value = parts.length ? decodeURIComponent(parts.join('=')) : null;
+			parsed[key] = value;
+		}
+		return parsed;
+	}
+	$(document).ready(function () {
+		var query = parsedQueryString();
+		for (var key in query) {
+			if (!query.hasOwnProperty(key) || key == 'ticket_form_id') continue;
+				var value = query[key];
+			if (typeof aliases[key] !== 'undefined') {
+				key = aliases[key];
+			}
+			var field = $('#' + key),
+				data = field.attr('data-tagger');
+      var label = '';
+      $('#' + key + ' > option').each(function () {
+      	if ($(this).attr('value') == value) {
+        	label = $(this)[0].text;
+        }
+      });
+      $($('label[for="' + key + '"]')[0].nextElementSibling)[0].innerHTML = label;
+			
+		}
+	})
+})(jQuery)
+</script>

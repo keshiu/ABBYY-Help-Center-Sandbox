@@ -1,0 +1,131 @@
+<section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12" id="knowledgebaseTitle">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="sub-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            <ol class="breadcrumbs" id="breadcrumbs">
+              <li title="ABBYY">
+                {{#link 'help_center'}}Help center{{/link}}
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="sections-container indent-p-3">
+	<div class="container" id="productFamilyLists">
+ 	</div>
+</section>
+<script>
+  var productFamilyCardsString, productsString;
+  /*$.ajax({
+    url: '/hc/articles/360001928739',
+    type:'GET',
+    success: function(data) {
+      var div = document.createElement('div'),
+      content = $(div).append(data).find('#productsAndLabels');
+      productFamilyCardsString = content[0].innerHTML;
+    }
+  })
+  .then(function(){
+  $.ajax({
+    url: '/hc/articles/360010692460',
+    type:'GET',
+    success: function(data) {
+      var div = document.createElement('div'),
+      content = $(div).append(data).find('#productsAndLabels');
+      productsString = content[0].innerHTML;
+    }
+  })
+  .then(function(){
+  function tojson(toPrint) {
+  return new Function("return " + toPrint + ";")();
+  }
+  var productFamilyCards = tojson(productFamilyCardsString),
+  products = tojson(productsString);*/
+  var category = "";
+  $.getJSON('/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/categories/360000005705.json', function(data){
+  	category = data.category.name;
+  }).then(function(){
+  var h1 = document.createElement('h1'),
+          liBreadcrumbs = document.createElement('li');
+          h1.innerHTML = category;
+          liBreadcrumbs.innerHTML = "<a href=\"/hc/" + document.documentElement.lang.toLowerCase() + "/categories/360000005705\">" + category + "</a>";
+            $('#knowledgebaseTitle').append(h1);
+          $('#breadcrumbs').append(liBreadcrumbs);
+        var columnsCount = 0;
+          productFamilyCards.forEach(function(productFamily) {
+            var familyName = document.createElement('h3'),
+            familyIcon = document.createElement('img'),
+          	pFamilyList = document.createElement('ul');
+          familyName.innerHTML = productFamily.card.family;
+          $(familyIcon).attr('src', productFamily.card.image).attr('alt', productFamily.card.name);
+            products.forEach(function(product) {
+							if (productFamily.label.indexOf(product.label) > -1) {
+								var pFamilyListItem = document.createElement('li');
+          			pFamilyListItem.innerHTML = "<a href=\"/hc/" + document.documentElement.lang.toLowerCase() + "/articles/360010665780?label_name=" + product.label + "\">" + product.name + "</a>";
+                $(pFamilyList).addClass('article-list').append(pFamilyListItem);
+              }
+            });
+            if (pFamilyList.childNodes.length > 0) {
+            if(columnsCount % 2 == 0) {
+              var row = document.createElement('div');
+              $(row).addClass('row');
+          		$('#productFamilyLists').append(row);
+            }
+          	var col6 = document.createElement('div'),
+          internalDiv = document.createElement('div'),
+          iconContainer = document.createElement('p'),
+          familyDescription = document.createElement('div');
+          $(iconContainer).addClass('product-image').append(familyIcon);
+          $(familyDescription).addClass('family-description').append(familyName).append(pFamilyList);
+          	$(internalDiv).addClass('section-content').append(iconContainer).append(familyDescription);
+          $(col6).addClass('col-sm-6').addClass('section-block').append(internalDiv)
+          $('#productFamilyLists').find('.row:last-child').append(col6);
+          columnsCount += 1;
+            }
+          });
+  });
+  //});
+   //});
+        </script>
+<section class="help-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<h2>{{dc 'helpcenter-customer_help_center'}}</h2>
+      </div>
+    </div>
+    <div class="row others">
+      <div class="col-sm-4">
+        {{#link 'new_request' class='button button-no-border button-mail-white submit-a-request'}}<img class="mail-white" src="{{asset 'Special-013w-33x33.svg'}}"><img class="mail-white-hover" src="{{asset 'Special-013w2-33x33.svg'}}"><p>{{dc 'helpcenter-submit_request'}}</p>{{/link}}
+      </div> 
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+    <div class="row manager_agent">
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+  </div>
+</section>

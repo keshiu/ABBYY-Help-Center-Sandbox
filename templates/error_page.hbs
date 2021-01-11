@@ -1,0 +1,22 @@
+<section class="section visual-572 error-page-visual error-page">
+  <div class="container">
+      <div class="visual-inner">
+        <h1>{{dc 'helpcenter-error_page_title'}}</h1>
+        {{#is error 'unauthorized'}}
+          <h3>{{link 'sign_in'}}</h3>
+        {{/is}}
+
+        {{#is error 'forbidden'}}
+          <h3>{{t 'not_authorized'}}</h3>
+        {{/is}}
+
+        {{#is error 'not_found'}}
+          <h3>{{t 'nonexistent_page'}}</h3>
+          <p>{{t 'mistyped_address_or_moved_page'}}</p>
+        {{/is}}
+        {{search submit=false instant=true class='search search-full'}}
+        <p>{{dc'helpcenter-or'}}</p>
+        {{#link 'help_center' class="button button-white-stroke button-long"}}{{dc 'helpcenter-backto_home_page'}}{{/link}}
+      </div>
+  </div>
+</section

@@ -1,0 +1,102 @@
+<section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h1 class="">{{dc 'helpcenter-help_visual_title'}}</h1>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+<script>
+  if (window.location.href.indexOf('/ru/') > -1) {
+  	$('.visual-143').addClass('sm-paddings-visual');
+  }
+</script>
+<section class="sub-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            {{breadcrumbs}}
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="form-container">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-xs-12">
+      <h2>{{dc 'helpcenter-submit_request'}}</h2>
+  <div class="form">
+    {{request_form}}
+  </div>
+    </div>
+    <div class="col-md-4 col-xs-12"></div>
+  </div>
+</div>
+</section>
+
+<script type="text/javascript">
+  var s = '{{dc 'helpcenter-privacy_comment_link'}}',
+  htmlObject = $(s);
+  $("#request_custom_fields_360000206485_hint").append(htmlObject);
+</script>
+
+<script type="text/javascript">
+(function ($) {
+	var aliases = { 'country': '360009753200', 'environment': '360004585460', 'impact': '360004250219' },
+  tagsToRemove = ['impact_showstopper'];
+	var parsedQueryString = function () {
+		var segments = window.location.search.substr(1).replace(/\+/g, ' ').split('&'),
+			parsed = {};
+		if (!segments) return parsed;
+		for (var i = 0, count = segments.length; i < count; i++) {
+			var parts = segments[i].split('='),
+				key = parts.shift(),
+				value = parts.length ? decodeURIComponent(parts.join('=')) : null;
+			parsed[key] = value;
+		}
+		return parsed;
+	}
+var removeTagsWeDontWant = function () {
+$('.nesty-panel').on('DOMNodeInserted', function(e){
+	var prefix = '#request_custom_fields_',
+	envField = $(prefix + aliases['environment']);
+	if (envField.attr('value') == 'environment_prod') {
+    for(var i in tagsToRemove) {
+      $('li#' + tagsToRemove[i]).remove();
+    }
+  }
+});
+};
+	$(document).ready(function () {
+    removeTagsWeDontWant();
+    /*$.getJSON('/api/v2/users/me.json', function(data) {
+    	var user = data.user;
+			var userCountry = user.user_fields.country;
+      var prefix = '#request_custom_fields_',
+      value = userCountry.replace('user_', '');
+      if (typeof aliases['country'] !== 'undefined') { key = aliases['country']; }
+      var field = $(prefix + key), data = field.attr('data-tagger');
+			if (data) { data = JSON.parse(data); var label = '';
+				if (!value) { label = data[0].label; } else { for (var i = 0, count; i < data.length; i++) {
+						if (data[i].value == value) { label = data[i].label; break; }
+				}
+			}
+			field.val(value).closest('.nesty-input').text(label);
+			} else {
+				field.val(value);
+			}
+  var envField = $(prefix + aliases['environment']), impactField = $(prefix + aliases['impact']);
+  envField.change(function(){
+  if (envField.attr('value') == 'environment_prod') { var dataToChange = JSON.parse(impactField.attr('data-tagger')), newArray = dataToChange.filter(function (arrayItem) { return arrayItem.value !== 'impact_showstopper'; });
+  impactField.attr('data-tagger', JSON.stringify(newArray)); }
+  });
+  });*/
+  });
+})(jQuery)
+</script>

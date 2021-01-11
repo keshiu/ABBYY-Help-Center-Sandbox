@@ -1,0 +1,309 @@
+<script type="text/javacript">
+
+</script>  
+<section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 class="article-visual-title"></h1>
+        </div>
+        <div class="col-sm-6">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sub-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            {{breadcrumbs}}
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="article-container" id="article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-sm-12" id="leftColumn">
+      	<article class="article">
+      		<div class="article-header xs-pl-1 xs-pr-1">
+            {{#if article.internal}}<span class="icon-lock" title="{{t 'internal'}}"></span>{{/if}}
+        		<h2 title="{{article.title}}" class="article-title">{{article.title}}
+        		</h2>
+						<div class="article-author">
+          		<div class="avatar article-avatar">
+            		<img src="{{article.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+                {{#if article.author.agent}}
+                <div class="icon-agent-container"><span class="icon-agent"></span></div>
+            		{{/if}}
+          		</div>
+          		<div class="article-meta">
+                {{#link 'user_profile' id=article.author.id}}
+              		{{article.author.name}}
+            		{{/link}}
+								<ul class="meta-group">
+              		{{#is article.created_at article.updated_at}}
+                  <li class="meta-data">{{date article.created_at timeago=true}}</li>
+                	{{else}}
+                		<li class="meta-data">{{date article.updated_at timeago=true}}</li>
+                		<!--<li class="meta-data">{{!t 'updated'}}</li> -->
+              		{{/is}}
+                  	{{#if comments}}
+            					<li>
+                      	<a href="#article-comments" class="article-comment-count">
+              						<span class="icon-comments"></span>
+              						{{article.comment_count}}
+            						</a>
+              				</li>
+          					{{/if}}
+            		</ul>
+          		</div>
+              <div class="subscribe-container"><div class="button-trans-blue-container button-sm-container">{{subscribe}}</div></div>
+      	</div>
+          </div>
+
+<div class="article-content xs-pl-1 xs-pr-1">
+	<div class="article-body">{{article.body}}</div>
+	<div class="article-attachments">
+		<ul class="attachments">
+			{{#each attachments}}
+				<li class="attachment-item">
+					<a href="{{url}}" target="_blank">{{name}}</a>
+					<div class="attachment-meta meta-group">
+						<span class="attachment-meta-item meta-data">{{size}}</span>
+						<a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>
+						<div class="article-share indent-pt-0 xs-pl-1 xs-pr-1">{{share}}</div>
+        		<div class="article-more-questions">
+              <p>{{request_callout}}</p>
+        		</div>
+    </article>
+        {{#is article.comments_disabled false}}
+        <div class="article-comments" id="article-comments">
+        		<div class="comments">
+          		<div class="comment-overview">
+            		<h4 class="comment-heading">
+              		{{t 'comments'}}
+            		</h4>
+            		<p class="comment-callout">{{t 'comments_count' count=article.comment_count}}</p>
+            		{{#if comments}}
+              		<div class="dropdown comment-sorter">
+                		<a class="dropdown-toggle">{{t 'sort_by'}}</a>
+                		<span class="dropdown-menu" role="menu">
+                  		{{#each comment_sorters}}
+                    		<a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
+                  		{{/each}}
+                		</span>
+              		</div>
+            		{{/if}}
+          		</div>
+
+          		<ul id="comments" class="comment-list">
+            		{{#each comments}}
+              		<li id="{{anchor}}" class="comment">
+                		<div class="comment-wrapper">
+                  		<div class="comment-info">
+                        <div class="avatar comment-avatar">
+                        		<img src="{{author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+                      	</div> 
+                        <div class="comment-block">
+                          <div class="comment-author">
+                            <div class="comment-meta">
+                              <span title="{{author.name}}">
+                                {{#link 'user_profile' id=author.id}}
+                                  {{author.name}}
+                                {{/link}}
+                              </span>
+                              <ul class="meta-group">
+                                {{#if editor}}
+                                  <li class="meta-data">{{date edited_at timeago=true}}</li>
+                                  <li class="meta-data">{{t 'edited'}}</li>
+                                {{else}}
+                                  <li class="meta-data">{{date created_at timeago=true}}</li>
+                                {{/if}}
+                              </ul>
+                            </div>
+                            <div class="comment-labels">
+                              {{#with ticket}}
+                                <a href="{{url}}" target="_zendesk_lotus" class="status-label escalation-badge">
+                                  {{t 'request'}}{{id}}
+                                </a>
+                              {{/with}}
+                              {{#if pending}}
+                                <span class="comment-pending status-label status-label-pending">{{t 'pending_approval'}}</span>
+                              {{/if}}
+                            </div>
+                          </div>
+                          <div class="comment-body">{{body}}</div>
+                          <div class="comment-actions-container">
+                          <div class="comment-vote vote" role='radiogroup'>
+                            {{vote 'down' role='radio' class='vote-down' selected_class='vote-voted'}}
+                            {{vote 'sum' class='vote-sum'}}
+                            {{vote 'up' role='radio' class='vote-up' selected_class='vote-voted'}}
+                          </div>
+                          <div class="comment-actions actions">{{actions}}</div>
+                          </div>
+                  			</div>
+                  		</div>
+
+                		</div>
+              		</li>
+            		{{/each}}
+          		</ul>
+							{{pagination}}
+							{{#form 'comment' class='comment-form'}}
+            		<div class="avatar comment-avatar">{{user_avatar class='user-avatar'}}</div>
+            		<div class="comment-container">
+              		{{wysiwyg 'body'}}
+              		<div class="comment-form-controls">
+                		{{input type='submit' class="button button-blue"}}
+              		</div>
+            		</div>
+          		{{/form}}
+							<p class="comment-callout">{{comment_callout}}</p>
+        		</div>
+        </div>
+        {{/is}}
+        <div class="recently-viewed" id="recentlyViewed">
+          <h3>{{dc 'helpcenter-recently_viewed'}}</h3>
+          {{recent_articles}}
+        </div>
+        <script>
+          setTimeout(function(){
+            $('#recentlyViewed .recent-articles ul > li > a').each(function(){
+            	if(($(this).text().indexOf('[Service article]') > -1) || ($(this).text().indexOf('Filter by label') > -1) || ($(this).text().indexOf('Фильтрация по тэгу') > -1)) {
+            		$(this).closest('li').hide();
+            	} 
+            });
+          },1000);
+        </script>
+      </div>
+      <div class="col-md-4 col-sm-12" id="rightColumn">
+        <div class="right-fixed-column hidden-sm hidden-xs" id="rightFixedColumn">
+          <!-- related to labels articles list
+            <div class="same-label-list" id="sameLabelList">
+               <h3>Related articles</h3>
+              <ul class="labeled-articles" id="labels"></ul>
+              {{related_articles}}
+            </div>-->
+          <div class="same-label-list" id="sameLabelList">
+              {{related_articles}}
+            </div>
+         <div class="related-product">
+            <div id="relatedProducts">
+              <h3>{{dc 'helpcenter-related_product'}}</h3>
+              <div class="related-product-card" id="rp-card"></div>
+            </div>
+          </div>
+				</div>
+        <div class="visible-sm-block visible-xs-block" id="rightFixedColumnXS">
+          <!-- related to labels articles list
+            <div class="same-label-list" id="sameLabelList">
+               <h3>Related articles</h3>
+              <ul class="labeled-articles" id="labels"></ul>
+              {{related_articles}}
+            </div>-->
+          <div class="same-label-list" id="sameLabelList">
+              {{related_articles}}
+            </div>
+          
+          <div class="related-product">
+            <div id="relatedProductsXS">
+              <h3>Related product</h3>
+              <div class="related-product-card" id="rp-cardXS"></div>
+            </div>
+          </div>
+				</div>
+          <script>  
+            function loadRPCard(articleLabels) {
+  var cardsArray = [],
+  relatedPL = productsByLabels('360001928739');
+  articleLabels.forEach(function(label){
+      for(i = 0; i < relatedPL.length; i++) {
+        relatedPL[i].label.forEach(function(cardLabel) {
+          if(cardLabel.toLowerCase() == label.toLowerCase() && cardsArray.length < 1) {
+            cardsArray.push(relatedPL[i]);
+          }
+        });
+      }
+    });
+  if(cardsArray.length > 0) {
+    cardsArray.forEach(function(item) {
+        let div = document.createElement('div'),
+            description = (document.documentElement.lang == 'ru') ? item.card.descriptionRU : (document.documentElement.lang == 'ja') ? item.card.descriptionJA : item.card.description,
+            buttonUrl = (document.documentElement.lang == 'ru') ? item.card.buttonUrlRU : (document.documentElement.lang == 'ja') ? item.card.buttonUrlJA : item.card.buttonUrl,
+            buttonText = (document.documentElement.lang == 'ru') ? item.card.buttonTextRU : (document.documentElement.lang == 'ja') ? item.card.buttonTextJA : item.card.buttonText;
+        div.innerHTML = "<p class=\"rp-image\"><img src=\"" + item.card.image + "\"></p><h4>" + item.card.name + "</h4><div class=\"rp-description\"><p>" + description + "</p></div><p class=\"rp-button\"><a href=\"" + buttonUrl + "\" class=\"button button-red\" role=\"button\">" + buttonText + "</a></p>";
+        $(div).addClass("productCard");
+        $("#rp-cardXS").append($(div).clone());
+        $("#rp-card").append(div);
+    });
+  } else {
+    $("#relatedProducts").hide();
+    $("#relatedProductsXS").hide();
+  }
+}
+            const ul = document.getElementById('labels');
+            const ulXS = document.getElementById('labelsXS');
+            var labels = [],
+            articleIDs = [],
+            count = 0,
+            currentArticleID = {{article.id}};
+            {{#if article.labels}}
+            {{#each article.labels}} labels.push("{{identifier}}");{{/each}}
+            {{/if}}
+            /*{{#each article.labels}}    
+              sameLabelArticles_Block('{{identifier}}', articleIDs, currentArticleID);
+            {{/each}}*/
+            
+            loadRPCard(labels);
+            if ($("#rp-card").children().length == 0 && $("#sameLabelList").children().length == 0) {
+              $("#leftColumn").removeClass("col-md-8");
+              $("#rightColumn").hide();
+            }
+            if($('.article-more-questions p').innerHTML == null) {
+            	$('.article-more-questions').css('display', 'none');
+            }
+            deleteSpecialArticles();
+          </script>
+        
+      </div>
+    </div>
+  </div>
+</section>
+<section class="help-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<h2>{{dc 'helpcenter-customer_help_center'}}</h2>
+      </div>
+    </div>
+    <div class="row others">
+      <div class="col-sm-4">
+        {{#link 'new_request' class='button button-no-border button-mail-white submit-a-request'}}<img class="mail-white" src="{{asset 'Special-013w-33x33.svg'}}"><img class="mail-white-hover" src="{{asset 'Special-013w2-33x33.svg'}}"><p>{{dc 'helpcenter-submit_request'}}</p>{{/link}}
+      </div> 
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+    <div class="row manager_agent">
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+  </div>
+</section>

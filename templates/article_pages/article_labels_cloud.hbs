@@ -1,0 +1,94 @@
+
+	<section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h1 class="">{{dc 'helpcenter-help_visual_title'}}</h1>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+<script>
+  if (window.location.href.indexOf('/ru/') > -1) {
+  	$('.visual-143').addClass('sm-paddings-visual');
+  }
+</script>
+<section class="all-labels">
+  <div class="container">
+    <div class="row">
+    	<div class="col-md-8 col-sm-12">
+        <h2 id="labelsListTitle">{{dc 'helpcenter-tagged_articles'}} </h2>
+        <div class="same-label-list" id="sameLabelList">
+          <ul class="labeled-articles" id="labels"></ul>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-12">
+        <h3>{{dc 'helpcenter-all_labels'}}</h3>
+        <div class="labelsList" id="labelsList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(function(){
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return decodeURI(results[1]) || 0;
+    }
+	}
+  var labels = [],
+  ulList = document.createElement('ul'),
+  sectionLabels = document.getElementById('labelsList'),
+  labelName = "";
+  append(sectionLabels, ulList);
+  if (window.location.href.indexOf('360001579019?label_name=') > -1) {
+  	labelName = $.urlParam('label_name');
+  }
+	loadLabelsCloud('/api/v2/help_center/articles.json?page=1&per_page=100&locale=' + document.documentElement.lang.toLowerCase(), labelName);
+	const ul = document.getElementById('labels');
+	var articleIDs = [],
+	currentArticleID = {{article.id}},
+	labelList = document.getElementById('sameLabelList');
+  if(labelName != null) {
+  $('#labelsListTitle')[0].innerHTML += '"' + labelName.replace(new RegExp("%23",'g'), '\#') + '"';
+  }
+  articlesSameLabelRecursive('/api/v2/help_center/articles.json?label_names=' + encodeURIComponent(labelName.replace(new RegExp("%23",'g'), '\#')) + '&locale=' + document.documentElement.lang.toLowerCase(), articleIDs);
+  });
+</script>
+
+<section class="help-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<h2>{{dc 'helpcenter-customer_help_center'}}</h2>
+      </div>
+    </div>
+    <div class="row others">
+      <div class="col-sm-4">
+        {{#link 'new_request' class='button button-no-border button-mail-white submit-a-request'}}<img class="mail-white" src="{{asset 'Special-013w-33x33.svg'}}"><img class="mail-white-hover" src="{{asset 'Special-013w2-33x33.svg'}}"><p>{{dc 'helpcenter-submit_request'}}</p>{{/link}}
+      </div> 
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+    <div class="row manager_agent">
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,229 @@
+  <section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h1 class="">{{article.title}}</h1>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="sub-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            <ol class="breadcrumbs">
+              <li title="ABBYY">
+                {{#link 'help_center'}}Help center{{/link}}
+              </li>
+              <li title="{{article.title}}">{{article.title}}</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="article-container" id="article-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12" id="leftColumn">
+      	<article class="article">
+      		<div class="article-header xs-pl-1 xs-pr-1">
+            {{#if article.internal}}<span class="icon-lock" title="{{t 'internal'}}"></span>{{/if}}
+        		<h2 title="{{article.title}}" class="article-title">{{article.title}}
+        		</h2>
+						<div class="article-author">
+          		<div class="avatar article-avatar">
+            		<img src="{{article.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+                {{#if article.author.agent}}
+                <div class="icon-agent-container"><span class="icon-agent"></span></div>
+            		{{/if}}
+          		</div>
+          		<div class="article-meta">
+                {{#link 'user_profile' id=article.author.id}}
+              		{{article.author.name}}
+            		{{/link}}
+								<ul class="meta-group">
+              		{{#is article.created_at article.updated_at}}
+                  <li class="meta-data">{{date article.created_at timeago=true}}</li>
+                	{{else}}
+                		<li class="meta-data">{{date article.updated_at timeago=true}}</li>
+                		<!--<li class="meta-data">{{!t 'updated'}}</li> -->
+              		{{/is}}
+                  	{{#if comments}}
+            					<li>
+                      	<a href="#article-comments" class="article-comment-count">
+              						<span class="icon-comments"></span>
+              						{{article.comment_count}}
+            						</a>
+              				</li>
+          					{{/if}}
+            		</ul>
+          		</div>
+              <div class="subscribe-container"><div class="button-trans-blue-container button-sm-container">{{subscribe}}</div></div>
+      	</div>
+          </div>
+
+<div class="article-content xs-pl-1 xs-pr-1">
+	<div class="article-body">{{article.body}}</div>
+	<div class="article-attachments">
+		<ul class="attachments">
+			{{#each attachments}}
+				<li class="attachment-item">
+					<a href="{{url}}" target="_blank">{{name}}</a>
+					<div class="attachment-meta meta-group">
+						<span class="attachment-meta-item meta-data">{{size}}</span>
+						<a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
+					</div>
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>
+          {{#with article}}
+          		<div class="article-votes">
+                <div class="votes-text">
+                  <p class="article-votes-question">{{t 'was_this_article_helpful'}}</p>
+                  <p class="article-votes-count">{{vote 'label' class='article-vote-label'}}</p>
+                </div>
+            		<div class="article-votes-controls" role='radiogroup'>
+              		{{vote 'up' role='radio' class='article-vote-up button-white-stroke button-white-purple-back button'}}
+              		{{vote 'down' role='radio' class='article-vote-down button-white-stroke button-white-purple-back button'}}
+            		</div>
+            	</div>
+        		{{/with}}
+						<div class="article-share xs-pl-1 xs-pr-1">{{share}}</div>
+        		<div class="article-more-questions">
+              <p>{{request_callout}}</p>
+        		</div>
+    </article>
+        {{#is article.comments_disabled false}}
+        <div class="article-comments" id="article-comments">
+        		<div class="comments">
+          		<div class="comment-overview">
+            		<h4 class="comment-heading">
+              		{{t 'comments'}}
+            		</h4>
+            		<p class="comment-callout">{{t 'comments_count' count=article.comment_count}}</p>
+            		{{#if comments}}
+              		<div class="dropdown comment-sorter">
+                		<a class="dropdown-toggle">{{t 'sort_by'}}</a>
+                		<span class="dropdown-menu" role="menu">
+                  		{{#each comment_sorters}}
+                    		<a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
+                  		{{/each}}
+                		</span>
+              		</div>
+            		{{/if}}
+          		</div>
+
+          		<ul id="comments" class="comment-list">
+            		{{#each comments}}
+              		<li id="{{anchor}}" class="comment">
+                		<div class="comment-wrapper">
+                  		<div class="comment-info">
+                        <div class="avatar comment-avatar">
+                        		<img src="{{author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+                      	</div> 
+                        <div class="comment-block">
+                          <div class="comment-author">
+                            <div class="comment-meta">
+                              <span title="{{author.name}}">
+                                {{#link 'user_profile' id=author.id}}
+                                  {{author.name}}
+                                {{/link}}
+                              </span>
+                              <ul class="meta-group">
+                                {{#if editor}}
+                                  <li class="meta-data">{{date edited_at timeago=true}}</li>
+                                  <li class="meta-data">{{t 'edited'}}</li>
+                                {{else}}
+                                  <li class="meta-data">{{date created_at timeago=true}}</li>
+                                {{/if}}
+                              </ul>
+                            </div>
+                            <div class="comment-labels">
+                              {{#with ticket}}
+                                <a href="{{url}}" target="_zendesk_lotus" class="status-label escalation-badge">
+                                  {{t 'request'}}{{id}}
+                                </a>
+                              {{/with}}
+                              {{#if pending}}
+                                <span class="comment-pending status-label status-label-pending">{{t 'pending_approval'}}</span>
+                              {{/if}}
+                            </div>
+                          </div>
+                          <div class="comment-body">{{body}}</div>
+                          <div class="comment-actions-container">
+                          <div class="comment-vote vote" role='radiogroup'>
+                            {{vote 'down' role='radio' class='vote-down' selected_class='vote-voted'}}
+                            {{vote 'sum' class='vote-sum'}}
+                            {{vote 'up' role='radio' class='vote-up' selected_class='vote-voted'}}
+                          </div>
+                          <div class="comment-actions actions">{{actions}}</div>
+                          </div>
+                  			</div>
+                  		</div>
+
+                		</div>
+              		</li>
+            		{{/each}}
+          		</ul>
+							{{pagination}}
+							{{#form 'comment' class='comment-form'}}
+            		<div class="avatar comment-avatar">{{user_avatar class='user-avatar'}}</div>
+            		<div class="comment-container">
+              		{{wysiwyg 'body'}}
+              		<div class="comment-form-controls">
+                		{{input type='submit' class="button button-blue"}}
+              		</div>
+            		</div>
+          		{{/form}}
+							<p class="comment-callout">{{comment_callout}}</p>
+        		</div>
+        </div>
+        {{/is}}
+        <div class="recently-viewed" id="recentlyViewed">
+          <h3>{{dc 'helpcenter-recently_viewed'}}</h3>
+          {{recent_articles}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  $(function(){
+  deleteSpecialArticles();
+  });
+  </script>
+<section class="help-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<h2>{{dc 'helpcenter-customer_help_center'}}</h2>
+      </div>
+    </div>
+    <div class="row others">
+      <div class="col-sm-4">
+        {{#link 'new_request' class='button button-no-border button-mail-white submit-a-request'}}<img class="mail-white" src="{{asset 'Special-013w-33x33.svg'}}"><img class="mail-white-hover" src="{{asset 'Special-013w2-33x33.svg'}}"><p>{{dc 'helpcenter-submit_request'}}</p>{{/link}}
+      </div> 
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+    <div class="row manager_agent">
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+  </div>
+</section>

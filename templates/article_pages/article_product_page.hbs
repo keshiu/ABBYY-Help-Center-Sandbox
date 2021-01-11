@@ -1,0 +1,348 @@
+<script type="text/javascript">
+function loadProduct(label) {
+  //var relatedPL = productsByLabels('360010692460');
+  console.log("label =", label);
+  for(i = 0; i < productFamilyCards.length; i++) {
+                productFamilyCards[i].label.forEach(function(productLabel) {
+          if(productLabel.toLowerCase() == label.toLowerCase()) {
+            var li = document.createElement('li'),
+                h2 = document.createElement('h2');
+            li.innerHTML = productFamilyCards[i].card.name;
+            h2.innerHTML = productFamilyCards[i].card.name;
+            $('#breadcrumbs').append(li);
+            $('#title').append(h2);
+          }
+                                           });
+  }
+}
+                                  function loadRootContent (articlesLabelArray, sectionsInCategoryUrl) {
+                                           console.log("articlesLabelArray from loadRootContent =", articlesLabelArray);
+                                           console.log("sectionsInCategoryUrl =", sectionsInCategoryUrl);
+                                  	$.getJSON(sectionsInCategoryUrl, function(data) {
+                                  		var rootSectionsArray = [],
+                                  		rootLabelSectionsArray = [];
+                                  		$.each(data.sections, function(itx, itm) {
+                                  			if (itm.parent_section_id == null) {
+                                  				rootSectionsArray.push(itm);
+                                  			}
+                                  		});
+                                           if(rootSectionsArray != null) {
+                                           console.log("rootSectionsArray =", rootSectionsArray);
+                                           }
+                                  		rootSectionsArray.forEach(function (section) {
+                                  			articlesLabelArray[0].forEach(function (article) {
+                                           console.log("section.id =", section.id);
+                                           console.log("article.section_id =", article.section_id);
+                                  				if (section.id == article.section_id) {
+                                  					rootLabelSectionsArray.push(section);
+                                  				}
+                                  			});
+                                 			});
+                                  		console.log("rootLabelSectionsArray =", rootLabelSectionsArray);
+                                  	});
+                                  }
+function loadArticlesSectionLabelRecursive (urlSectionArticles, divId, sectionName, sectionArticles) {
+  $.getJSON(urlSectionArticles, function(data) {
+    var family = data.articles;
+    family.map(function(article) {
+      sectionArticles.push(article);
+    });
+    if (data.next_page == null) {
+      var articleUL = document.createElement('ul'),
+        articleULSeeMore = document.createElement('ul'),
+        divSeeMore = createNode('div'),
+        divSeeMoreParent = createNode('div'),
+        buttons = createNode('p'),
+        liCount = 0,
+        div = createNode('div');
+    buttons.innerHTML = "<a href=\"#collapse" + divId + "\" class=\"button button-link button-sm button-white-blue button-see-more indent-mb-0 indent-mt-2 collapsed\" title-en=\"See All\" data-toggle=\"collapse\" data-open=\"See all\" data-close=\"Close\" aria-expanded=\"false\">See all</a>";
+        $(divSeeMore).addClass("collapse text-collapse");
+    $(divSeeMoreParent).addClass("hidden");
+    $(divSeeMore).css("padding-top", "14px");
+        divSeeMore.setAttribute("id", "collapse" + divId);
+    append(divSeeMoreParent, divSeeMore);
+    append(divSeeMore, articleULSeeMore);
+    append(divSeeMoreParent, buttons);
+      sectionArticles.forEach(function(article) {
+        var li = createNode('li');
+      		li.innerHTML = "<a href =\""+article.html_url+"\">"+article.title+"</a>";
+      if (liCount > 2) {
+        append(articleULSeeMore, li);
+        $(divSeeMoreParent).removeClass("hidden");
+      } else {
+        append(articleUL, li);
+      }
+      liCount += 1;
+      });
+      if ($(articleUL).find('li').length > 0) {
+        var h3 = createNode('h3');
+      		h3.innerHTML = sectionName,
+            div = createNode('div');
+      $(div).addClass("col-sm-6 section-block");
+      var divContent = createNode('div');
+      $(divContent).addClass("section-content");
+      divContent.setAttribute("id", divId);
+      append(divContent, h3);
+      append(divContent, articleUL);
+      append(divContent, divSeeMoreParent);
+      append(div, divContent);
+        var sectionsRows = $("#sections-container").find('.row');
+        if ($(sectionsRows).length == 0 || $(sectionsRows).last().find('.section-block').length > 1) {
+          var row = document.createElement('div');
+  				$(row).addClass('row');
+          $("#sections-container").append(row);
+        }
+        $("#sections-container .row:last-child").append(div);
+        $('.text-collapse').on('shown.bs.collapse', function () {
+        var buttonHref = $(this).attr("id");       
+        var buttonText = $(".button[href='#" + buttonHref + "']").attr('data-close');
+        $(".button[href='#" + buttonHref + "']").html(buttonText);
+        $(".button-see-more[href='#" + buttonHref + "']").addClass('button-see-less');
+        $(".button-see-more[href='#" + buttonHref + "']").removeClass('button-see-more');      
+    }).on('hidden.bs.collapse', function () {
+        var buttonHref = $(this).attr("id");        
+        var buttonText = $(".button[href='#" + buttonHref + "']").attr('data-open');
+        $(".button[href='#" + buttonHref + "']").html(buttonText);
+        $(".button-see-less[href='#" + buttonHref + "']").addClass('button-see-more');
+        $(".button-see-less[href='#" + buttonHref + "']").removeClass('button-see-less');
+        });
+    	}
+      } else {
+      loadArticlesSectionLabelRecursive(data.next_page, divId, sectionName, sectionArticles);
+    }
+    });
+}
+  function loadArticlesCategoryRecursive (url, divDOMId, divId) {
+  var articlesFromCategory = [];
+  $.getJSON(url, function(data) {
+    var family = data.articles,
+    articleUL = document.createElement('ul'),
+        articleULSeeMore = document.createElement('ul'),
+        divSeeMore = createNode('div'),
+        divSeeMoreParent = createNode('div'),
+        buttons = createNode('p'),
+        liCount = 0,
+        div = createNode('div');
+    buttons.innerHTML = "<a href=\"#collapse" + divId + "\" class=\"button button-link button-sm button-white-blue button-see-more indent-mb-0 indent-mt-2 collapsed\" title-en=\"See All\" data-toggle=\"collapse\" data-open=\"See all\" data-close=\"Close\" aria-expanded=\"false\">See all</a>";
+        $(divSeeMore).addClass("collapse text-collapse");
+    $(divSeeMoreParent).addClass("hidden");
+    $(divSeeMore).css("padding-top", "14px");
+        divSeeMore.setAttribute("id", "collapse" + divId);
+    append(divSeeMoreParent, divSeeMore);
+    append(divSeeMore, articleULSeeMore);
+    append(divSeeMoreParent, buttons);
+    family.map(function(article) {
+      let li = createNode('li');
+      var liClass = (divDOMId == 'downloadsContainer') ? 'link-download-blue' : '';
+  				$(li).addClass(liClass);
+      		li.innerHTML = "<a href =\""+article.html_url+"\">"+article.title+"</a>";
+      		if (liCount > 2) {
+        append(articleULSeeMore, li);
+        $(divSeeMoreParent).removeClass("hidden");
+      } else {
+        append(articleUL, li);
+      }
+      liCount += 1;
+    });
+    if(data.next_page != null) {
+      loadArticlesCategoryRecursive(data.next_page, divCategoryId, divId);
+    } else {
+      if ($(articleUL).find('li').length > 0) {
+        $('#' + divDOMId + ' > .section-content').append(articleUL);
+        $('#' + divDOMId + ' > .section-content').append(divSeeMoreParent);
+        $('#ddContainer').removeClass("hidden");
+        $('main').removeClass('bgwhite');
+    	} else {
+        $('#' + divDOMId).hide();
+        $('#ddContainer > .container > .row > div:not(#' + divDOMId + ')').removeClass('col-sm-6').addClass('col-sm-12');
+      }
+      }
+    $('.text-collapse').on('shown.bs.collapse', function () {
+        var buttonHref = $(this).attr("id");       
+        var buttonText = $(".button[href='#" + buttonHref + "']").attr('data-close');
+        $(".button[href='#" + buttonHref + "']").html(buttonText);
+        $(".button-see-more[href='#" + buttonHref + "']").addClass('button-see-less');
+        $(".button-see-more[href='#" + buttonHref + "']").removeClass('button-see-more');      
+    }).on('hidden.bs.collapse', function () {
+        var buttonHref = $(this).attr("id");        
+        var buttonText = $(".button[href='#" + buttonHref + "']").attr('data-open');
+        $(".button[href='#" + buttonHref + "']").html(buttonText);
+        $(".button-see-less[href='#" + buttonHref + "']").addClass('button-see-more');
+        $(".button-see-less[href='#" + buttonHref + "']").removeClass('button-see-less');
+        });
+    });
+}
+function loadKBSections (urlSections, label) {
+  $.getJSON(urlSections, function(data) {
+    var family = data.sections;
+    family.map(function(section) {
+      var articlesSectionLabel = "",
+      urlSectionArticles = '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/sections/' + section.id + '/articles.json?label_names=' + label;
+      var sectionArticles = [];
+      loadArticlesSectionLabelRecursive(urlSectionArticles, section.id, section.name, sectionArticles);
+    });
+    });
+}
+  
+  function getArticlesLabel (url, label, Array, categoryId) {
+  console.log("url =", url);
+  $.getJSON(url, function(data) {
+  console.log("data.articles =", data.articles);
+  Array.push(data.articles);
+  console.log("Array =", Array);
+  if(data.next_page != null) {
+  var urlArticles = '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/categories/' + data.category.id + '/articles.json?label_names=' + label + '&next_page=data.next_page&per_page=100';
+      getArticlesLabel(urlArticles, label, Array, categoryId);
+    } else {
+  if (Array != null) {
+  	console.log("articlesArray =", Array);
+  loadRootContent(Array, '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/categories/' + categoryId + '/sections.json?per_page=100');
+  }
+  return Array;
+  
+  }
+  });
+  }
+  function loadDDSections (categoryId, label) {
+  var urlCategory = '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/categories/' + categoryId;
+  var Array = [];
+  $.getJSON(urlCategory, function(data) {
+  var urlArticles = '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/categories/' + data.category.id + '/articles.json?label_names=' + label + '&per_page=100';
+  var articlesArray = getArticlesLabel(urlArticles, label, Array, data.category.id);
+  if (articlesArray != null) {
+  	console.log("articlesArray =", articlesArray);
+  loadRootContent(articlesArray, '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/categories/' + data.category.id + '/sections.json?per_page=100');
+  }
+    var h3 = document.createElement('h3'),
+        divDOMId = "";
+    if (data.category.id == '360000079589') {
+      h3.innerHTML = data.category.name;
+      $('#documentationContainer > .section-content').append(h3);
+      divDOMId = 'documentationContainer'
+    } else if (data.category.id == '360000497619') {
+      h3.innerHTML = data.category.name;
+      $('#downloadsContainer > .section-content').append(h3);
+      divDOMId = 'downloadsContainer';
+    }
+    var url = '/api/v2/help_center/' + document.documentElement.lang.toLowerCase() + '/categories/' + data.category.id + '/articles.json?label_names=' + label;
+    loadArticlesCategoryRecursive(url, divDOMId, data.category.id);
+    });
+}
+</script>
+<section class="visual-143">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <h1 class="">{{dc 'helpcenter-help_visual_title'}}</h1>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          {{search submit=false instant=true}}
+        </div>
+      </div>
+    </div>
+  </section>
+<script>
+  if (window.location.href.indexOf('/ru/') > -1) {
+  	$('.visual-143').addClass('sm-paddings-visual');
+  }
+</script>
+<section class="sub-nav bgwhite">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <nav>
+            <ol class="breadcrumbs" id="breadcrumbs">
+              <li title="ABBYY">
+                {{#link 'help_center'}}Help center{{/link}}
+              </li>
+              
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+<section class="indent-pt-3 indent-pb-4 bgwhite">
+	<div class="container">
+    <div class="row">
+      <div class="col-sm-12" id="title">
+        
+      </div>
+    </div>
+  </div>
+</section>
+<section id="kbContainer" class="sections-container indent-pt-0 indent-pb-1 bgwhite">
+	<div class="container" id="sections-container"></div>
+</section>
+
+<section id="ddContainer" class="sections-container indent-pb-3 hidden">
+  <div class="container">
+    <div class="row">
+      <div id="documentationContainer" class="col-sm-6 section-block">
+        <div class="section-content"></div>
+      </div>
+      <div id="downloadsContainer" class="col-sm-6 section-block">
+      <div class="section-content"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var count = 0;
+  $.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return decodeURI(results[1]) || 0;
+    }
+	}
+  var labelName = "",
+  kbCategoryId = '360000005705';
+  if (window.location.href.indexOf('360010665780?label_name=') > -1) {
+  	labelName = $.urlParam('label_name');
+  }
+  loadProduct(labelName);
+  loadKBSections('/api/v2/help_center/categories/' + kbCategoryId + '/sections.json?page=1&per_page=100&locale=' + document.documentElement.lang.toLowerCase(), labelName);
+  loadDDSections('360000079589', labelName); //documentation
+  loadDDSections('360000497619', labelName); //downloads
+  if ($('#ddContainer').hasClass('hidden')) {
+  	$('main').addClass('bgwhite');
+  }
+</script>
+<style type="text/css">
+main.autoheight-main {
+  background-color: #f0f5fa;
+  }
+</style>
+
+<section class="help-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+      	<h2>{{dc 'helpcenter-customer_help_center'}}</h2>
+      </div>
+    </div>
+    <div class="row others">
+      <div class="col-sm-4">
+        {{#link 'new_request' class='button button-no-border button-mail-white submit-a-request'}}<img class="mail-white" src="{{asset 'Special-013w-33x33.svg'}}"><img class="mail-white-hover" src="{{asset 'Special-013w2-33x33.svg'}}"><p>{{dc 'helpcenter-submit_request'}}</p>{{/link}}
+      </div> 
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-4">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+    <div class="row manager_agent">
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-support_policy_url'}}" class="button button-no-border button-policies-white"><img class="policies-white" src="{{asset 'Special-068w-33x33.svg'}}"><img class="policies-white-hover" src="{{asset 'Special-068w2-33x33.svg'}}"><p>{{dc 'helpcenter-support_policy'}}</p></a>
+      </div>
+      <div class="col-sm-6">
+        <a href="{{dc 'helpcenter-supported_products_url'}}" class="button button-no-border button-partner-white"><img class="partner-white" src="{{asset 'Special-072w-22x22.svg'}}"><img class="partner-white-hover" src="{{asset 'Special-072w2-22x22.svg'}}"><p>{{dc 'helpcenter-supported_products'}}</p></a>
+      </div>
+    </div>
+  </div>
+</section>
