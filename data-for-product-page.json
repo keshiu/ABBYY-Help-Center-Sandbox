@@ -1,0 +1,26 @@
+<div id="productsAndLabels">
+  [ { label: "FineReader 15", name: "ABBYY FineReader 15" }, { label: "FineReader
+  14", name: "ABBYY FineReader 14" }, { label: "FineReader Server 14", name: "ABBYY
+  FineReader Server 14" }, { label: "Recognition Server 4", name: "ABBYY Recognition
+  Server 4" }, { label: "FineReader Pro for Mac", name: "ABBYY FineReader Pro for
+  Mac" }, { label: "FineReader 12 Sprint", name: "ABBYY FineReader 12 Sprint" },
+  { label: "FineReader 9.0 Sprint", name: "ABBYY FineReader 9.0 Sprint" }, { label:
+  "FineReader 6.0 Sprint", name: "ABBYY FineReader 6.0 Sprint" }, { label: "FineReader
+  10 Home", name: "ABBYY FineReader 10 Home Edition" }, { label: "Screenshot Reader",
+  name: "ABBYY Screenshot Reader 11" }, { label: "Comparator", name: "ABBYY Comparator"},
+  { label: "FineReader Online", name: "ABBYY FineReader Online" }, { label: "BCR
+  for Android", name: "ABBYY Business Card Reader for Android" }, { label: "BCR
+  for iOS", name: "ABBYY Business Card Reader for iOS" }, { label: "TextGrabber
+  for Android", name: "ABBYY TextGrabber for Android" }, { label: "TextGrabber
+  for iOS", name: "ABBYY TextGrabber iOS" }, { label: "FineScanner for Android",
+  name: "ABBYY FineScanner for Android" }, { label: "FineScanner for iOS", name:
+  "ABBYY FineScanner for iOS" }, { label: "FlexiCapture 12", name: "ABBYY FlexiCapture
+  12" }, { label: "FlexiCapture 11", name: "ABBYY FlexiCapture 11" }, { label:
+  "FlexiCapture SDK", name: "ABBYY FlexiCapture SDK" }, { label: "FlexiCapture
+  Engine 12", name: "ABBYY FlexiCapture Engine 12" }, { label: "FlexiCapture Engine
+  11", name: "ABBYY FlexiCapture Engine 11" }, { label: "Cloud OCR SDK", name:
+  "ABBYY Cloud OCR SDK" }, { label: "Mobile Capture", name: "ABBYY Mobile Capture"
+  }, { label: "Mobile Web Capture", name: "ABBYY Mobile Web Capture" }, { label:
+  "Vantage", name: "ABBYY Vantage" }, { label: "Timeline", name: "ABBYY Timeline"
+  }]
+</div>
