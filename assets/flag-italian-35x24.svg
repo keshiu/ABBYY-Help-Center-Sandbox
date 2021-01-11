@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24">
+  <title>flag-italian-35x24</title>
+  <g>
+    <polygon points="35 0 35 24 24 24 24 0 35 0 35 0" fill="#f90805" fill-rule="evenodd"/>
+    <polygon points="11.7 0 11.7 24 23.3 24 23.3 0 11.7 0 11.7 0" fill="#f4f4f7" fill-rule="evenodd"/>
+    <polygon points="11 0 11 24 0 24 0 0 11 0 11 0" fill="#46b61c" fill-rule="evenodd"/>
+    <path d="M34,1V23H1V1H34m1-1H0V24H35V0Z" fill="#afb9c3"/>
+  </g>
+</svg>

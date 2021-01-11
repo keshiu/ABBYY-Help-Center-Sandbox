@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24">
+  <title>flag-vietnamese-35x24</title>
+  <g>
+    <polygon points="0 24 35 24 35 0 0 0 0 24 0 24" fill="#f90805" fill-rule="evenodd"/>
+    <polygon points="17.5 5 19 10 24 10 20 13 21.5 18 17.5 14.9 13.5 18 15 13 11 10 16 10 17.5 5 17.5 5" fill="#f8ce00" fill-rule="evenodd"/>
+    <path d="M34,1V23H1V1H34m1-1H0V24H35V0Z" fill="#afb9c3"/>
+  </g>
+</svg>

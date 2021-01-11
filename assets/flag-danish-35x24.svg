@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24">
+  <title>flag-danish-35x24</title>
+  <g>
+    <polygon points="0 0 35 0 35 24 0 24 0 0 0 0" fill="#f90805"/>
+    <polygon points="10 0 14 0 14 10 35 10 35 14 14 14 14 24 10 24 10 14 0 14 0 10 10 10 10 0 10 0" fill="#fbf9f9"/>
+    <path d="M34,1V23H1V1H34m1-1H0V24H35V0Z" fill="#afb9c3"/>
+  </g>
+</svg>

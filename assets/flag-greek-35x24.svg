@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24">
+  <title>flag-greek-35x24</title>
+  <g>
+    <polygon points="0 24 35 24 35 0 0 0 0 24 0 24" fill="#0463c8" fill-rule="evenodd"/>
+    <path d="M13,6V3H35V6M13,8H35v3H13V8ZM0,18H35v3H0V18Zm8-5H6V0H8Z" fill="#fbf9f9" fill-rule="evenodd"/>
+    <rect y="13" width="35" height="3" fill="#fff"/>
+    <rect y="6" width="13" height="2" fill="#fff"/>
+    <path d="M34,1V23H1V1H34m1-1H0V24H35V0Z" fill="#afb9c3"/>
+  </g>
+</svg>

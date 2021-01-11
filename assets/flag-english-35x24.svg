@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24">
+  <title>flag-english-35x24</title>
+  <g>
+    <polygon points="0 23.3 35 23.3 35 0 0 0 0 23.3 0 23.3" fill="#e6e7e8" fill-rule="evenodd"/>
+    <g>
+      <polygon points="0 0 17.5 0 35 0 35 24 17.5 24 0 24 0 0 0 0" fill="#0437a0" fill-rule="evenodd"/>
+      <g>
+        <polygon points="35 21 21.8 12 35 3 35 0 30.7 0 17.5 9 4.3 0 0 0 0 3 13.2 12 0 21 0 24 4.3 24 17.5 15 30.7 24 35 24 35 21 35 21" fill="#fbf9f8"/>
+        <polygon points="35 23 19 12 35 1 35 0 33 0 17.5 11 2 0 0 0 0 1 16 12 0 23 0 24 2 24 17.5 13 33 24 35 24 35 23 35 23" fill="#f90805"/>
+        <polygon points="15 0 17.5 0 20 0 20 9 35 9 35 15 20 15 20 24 17.5 24 15 24 15 15 0 15 0 9 15 9 15 0 15 0" fill="#fbf9f8" fill-rule="evenodd"/>
+        <polygon points="19 0 19 10 35 10 35 14 19 14 19 24 17.5 24 16 24 16 14 0 14 0 10 16 10 16 0 17.5 0 19.3 0 19 0" fill="#f90805" fill-rule="evenodd"/>
+      </g>
+    </g>
+    <path d="M34,1V23H1V1H34m1-1H0V24H35V0Z" fill="#afb9c3"/>
+  </g>
+</svg>

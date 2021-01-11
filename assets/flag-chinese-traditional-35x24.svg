@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24">
+  <title>flag-chinese-traditional-35x24</title>
+  <g>
+    <polygon points="0 24 35 24 35 0 0 0 0 24 0 24" fill="#f90805" fill-rule="evenodd"/>
+    <polygon points="0 12 18 12 18 0 0 0 0 12 0 12" fill="#0437a0" fill-rule="evenodd"/>
+    <path d="M9,8.1l.4,1.1h1.3l-1.1.7L10,11l-1-.7L8,11l.4-1.1L7.3,9.2H8.6L9,8.1ZM9,1l.3.9h1l-.8.5.3.9L9,2.7l-.8.6.3-.9-.8-.5h1L9,1ZM5.3,3.7l.3.9H6.7l-.9.5.4.9-.9-.5L4.5,6l.3-.9L4,4.6H5l.3-.9Zm7.4-.4.3.8h1l-.8.5.3.8-.8-.5-.7.5.3-.8-.8-.5h.9l.3-.8ZM10.8,6.1l.2.5h.6l-.5.4.2.5-.5-.3-.5.3.2-.5L10,6.6h.6l.2-.5Z" fill="#fff" fill-rule="evenodd"/>
+    <path d="M34,1V23H1V1H34m1-1H0V24H35V0Z" fill="#afb9c3"/>
+  </g>
+</svg>

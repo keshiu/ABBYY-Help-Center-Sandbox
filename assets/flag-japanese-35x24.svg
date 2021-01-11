@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24">
+  <title>flag-japanese-35x24</title>
+  <g>
+    <polygon points="0 24 35 24 35 0 0 0 0 24 0 24" fill="#f4f4f7" fill-rule="evenodd"/>
+    <path d="M23.5,12a6,6,0,1,0-6,6,6,6,0,0,0,6-6Z" fill="#f90805" fill-rule="evenodd"/>
+    <path d="M34,1V23H1V1H34m1-1H0V24H35V0Z" fill="#afb9c3"/>
+  </g>
+</svg>

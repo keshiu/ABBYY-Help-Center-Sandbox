@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24">
+  <title>flag-czech-35x24</title>
+  <g>
+    <polygon points="0 24 35 24 35 0 0 0 0 24 0 24" fill="#f90805" fill-rule="evenodd"/>
+    <polygon points="0 12 35 12 35 0 0 0 0 12 0 12" fill="#f4f4f7" fill-rule="evenodd"/>
+    <polygon points="17 12 0 0 0 24 17 12 17 12" fill="#043cb2" fill-rule="evenodd"/>
+    <path d="M34,1V23H1V1H34m1-1H0V24H35V0Z" fill="#afb9c3"/>
+  </g>
+</svg>

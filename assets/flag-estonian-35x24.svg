@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35" height="24" viewBox="0 0 35 24">
+  <title>flag-estonian-35x24</title>
+  <g>
+    <polygon points="0 24 35 24 35 0 0 0 0 24 0 24" fill="#0463c8" fill-rule="evenodd"/>
+    <polygon points="0 16 35 16 35 8 0 8 0 16 0 16" fill="#030303" fill-rule="evenodd"/>
+    <polygon points="0 24 35 24 35 16 0 16 0 24 0 24" fill="#f4f4f7" fill-rule="evenodd"/>
+    <path d="M34,1V23H1V1H34m1-1H0V24H35V0Z" fill="#afb9c3"/>
+  </g>
+</svg>

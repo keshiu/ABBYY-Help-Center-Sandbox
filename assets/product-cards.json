@@ -1,0 +1,193 @@
+<div id="productsAndLabels">
+  [ { label: ["Timeline"], card: { image: "https://support.abbyy.com/hc/article_attachments/360006708099/timeline-77x77.svg",
+  name: "ABBYY Timeline", family: "ABBYY Timeline", description: "A process intelligence
+  platform that allows businesses to use the information contained within their
+  systems to create a visual model of their processes, analyze them in real time
+  to identify bottlenecks, and predict future outcomes.", descriptionRU: "A process
+  intelligence platform that allows businesses to use the information contained
+  within their systems to create a visual model of their processes, analyze them
+  in real time to identify bottlenecks, and predict future outcomes.", descriptionJA:
+  "システム内に蓄積された情報を、事業で活用するためのプロセス・インテリジェンス・プラットフォームです。業務プロセスのモデルの構築、リアルタイム分析を行いながらボトルネックを特定し、将来的な成果を予測します。",
+  buttonUrl: "https://www.abbyy.com/timeline/", buttonUrlRU: "https://www.abbyy.com/ru-ru/timeline/",
+  buttonUrlJA: "https://www.abbyy.com/ja-jp/timeline/", buttonText: "More Info",
+  buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["Vantage"], card:
+  { image: "https://support.abbyy.com/hc/article_attachments/360004317560/Vantage-44x44.svg",
+  name: "ABBYY Vantage", family: "ABBYY Vantage", description: "Enable your intelligent
+  automation platforms with new and advanced cognitive skills", descriptionRU:
+  "Enable your intelligent automation platforms with new and advanced cognitive
+  skills", descriptionJA: "コンテンツから意味を抽出し、その意味を理解するためには、非構造化コンテンツを構造化し、 アクション可能な情報に変換するスキルが必要となります。このようなスキルを実現する企業向け次世代型コンテンツIQプラットフォームが開発されました。",
+  buttonUrl: "https://www.abbyy.com/vantage/", buttonUrlRU: "https://www.abbyy.com/ru-ru/vantage/",
+  buttonUrlJA: "https://www.abbyy.com/ja-jp/vantage/", buttonText: "More Info",
+  buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["FineReader 11",
+  "FineReader 12", "FineReader 14", "FineReader 15", "PDF Transformer"], card:
+  { image: "https://support.abbyy.com/hc/article_attachments/360001234420/rp-fr-icon.svg",
+  name: "ABBYY FineReader 15", family: "ABBYY FineReader", description: "Convert,
+  edit, share, and collaborate on PDFs and scans in the digital workplace.", descriptionRU:
+  "Ваш интеллектуальный редактор PDF. Конвертируйте, редактируйте и комментируйте
+  любые документы.", descriptionJA: "デジタルワークスペースでの効率的なドキュメント処理（PDF およびスキャン）のための
+  PDF ソフトウェア。 ドキュメントのデジタル化、検索、編集、保護、共有、共同作業を簡単に実施可能。", buttonUrl: "https://www.abbyy.com/finereader/",
+  buttonUrlRU: "https://www.abbyy.com/ru-ru/finereader/", buttonUrlJA: "https://www.abbyy.com/ja-jp/finereader/",
+  buttonText: "More Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } },
+  { label: ["FineReader Pro for Mac"], card: { image: "https://support.abbyy.com/hc/article_attachments/360009442279/finereader-for-mac-x77.svg",
+  name: "ABBYY FineReader Pro for Mac", family: "ABBYY FineReader Pro for Mac",
+  description: "Accurate OCR for Mac OS X. Turns scans, PDFs and digital photos
+  into editable formats.", descriptionRU: "Программа для распознавания текста,
+  разработанная специально для Mac OS X.", descriptionJA: "卓越した精度とレイアウト保持率でスキャンした文書、PDF、デジタル写真を、検索および編集可能な文書に変換します。",
+  buttonUrl: "https://www.abbyy.com/finereader/pro-for-mac/", buttonUrlRU: "https://www.abbyy.com/ru-ru/finereader/pro-for-mac/",
+  buttonUrlJA: "https://www.abbyy.com/ja-jp/finereader/pro-for-mac/", buttonText:
+  "More Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["FlexiCapture
+  12", "FlexiCapture 11"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001341839/rp-fc-icon.svg",
+  name: "ABBYY FlexiCapture", family: "ABBYY FlexiCapture", description: "Universal
+  and highly scalable data capture, document and form processing platform for organizations
+  of any size and industry.", descriptionRU: "Универсальная платформа для интеллектуальной
+  обработки информации.", descriptionJA: "様々な企業規模、業種に適応する汎用的、スケーラブルなデータキャプチャ、文書、フォーム処理プラットフォーム",
+  buttonUrl: "https://www.abbyy.com/flexicapture/", buttonUrlRU: "https://www.abbyy.com/ru-ru/flexicapture/",
+  buttonUrlJA: "https://www.abbyy.com/ja-jp/flexicapture/", buttonText: "More Info",
+  buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["FlexiCapture
+  for Invoices"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001341839/rp-fc-icon.svg",
+  name: "ABBYY FlexiCapture for Invoices", family: "ABBYY FlexiCapture for Invoices",
+  description: "ABBYY FlexiCapture for Invoices is a ready-to-run accounts payable
+  automation solution that enables companies and organizations across the globe
+  to dramatically increase the productivity of their AP processes.", descriptionRU:
+  "ABBYY FlexiCapture for Invoices is a ready-to-run accounts payable automation
+  solution that enables companies and organizations across the globe to dramatically
+  increase the productivity of their AP processes.", descriptionJA: "ABBYY FlexiCapture
+  for Invoices is a ready-to-run accounts payable automation solution that enables
+  companies and organizations across the globe to dramatically increase the productivity
+  of their AP processes.", buttonUrl: "https://www.abbyy.com/flexicapture-for-invoices/",
+  buttonUrlRU: "https://www.abbyy.com/ru-ru/flexicapture-for-invoices/", buttonUrlJA:
+  "https://www.abbyy.com/ja-jp/flexicapture-for-invoices/", buttonText: "More Info",
+  buttonTextRU: "More Info", buttonTextJA: "詳しくは" } }, { label: ["Business Card
+  Reader", "BCR for iOS", "BСR for Android"], card: { image: "https://support.abbyy.com/hc/article_attachments/360008701260/bcr-rounded-updated-77x77.svg",
+  name: "ABBYY Business Card Reader", family: "ABBYY Business Card Reader", description:
+  "Scan and manage all your business cards and contacts in a flash", descriptionRU:
+  "Сканирует бумажные визитки и позволяет управлять деловыми контактами", descriptionJA:
+  "Scan and manage all your business cards and contacts in a flash", buttonUrl:
+  "https://www.abbyybcr.com/en/", buttonUrlRU: "https://www.abbyybcr.com/ru/",
+  buttonUrlJA: "https://www.abbyybcr.com/jp/", buttonText: "More Info", buttonTextRU:
+  "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["Screenshot Reader"], card:
+  { image: "https://support.abbyy.com/hc/article_attachments/360008701500/screenshotreader-85x77.svg",
+  name: "ABBYY Screenshot Reader", family: "ABBYY Screenshot Reader", description:
+  "Creates “snapshots” of images and texts from opened documents, file menus, Web
+  pages, presentations, or PDF files with just several clicks.", descriptionRU:
+  "Простая и удобная программа для создания снимков любой области экрана.", descriptionJA:
+  "Creates “snapshots” of images and texts from opened documents, file menus, Web
+  pages, presentations, or PDF files with just several clicks.", buttonUrl: "https://www.abbyy.com/screenshot-reader/",
+  buttonUrlRU: "https://www.abbyy.com/ru-ru/screenshot-reader/", buttonUrlJA: "https://www.abbyy.com/screenshot-reader/",
+  buttonText: "More Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } },
+  { label: ["FineReader Server", "Recognition Server 4"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001342659/rp-frs-icon.svg",
+  name: "ABBYY FineReader Server", family: "ABBYY Recognition Server", description:
+  "Powerful server-based OCR service for automated document capture and PDF conversion
+  software.", descriptionRU: "Оптимальный выбор для организаций, которым нужна
+  простая, но мощная система для оптического распознавания текста и конвертирования
+  PDF-документов.", descriptionJA: "自動文書キャプチャとPDF変換ソフト用の強力なサーバーベースOCRサービス。", buttonUrl:
+  "https://www.abbyy.com/finereader-server/", buttonUrlRU: "https://www.abbyy.com/ru-ru/finereader-server/",
+  buttonUrlJA: "https://www.abbyy.com/ja-jp/finereader-server/", buttonText: "More
+  Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["FineReader
+  Engine", "FineReader Engine 12"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001234460/rp-fre-icon.svg",
+  name: "ABBYY FineReader Engine", family: "ABBYY FineReader Engine", description:
+  "Powerful OCR SDK to integrate ABBYY’s state-of-the-art document OCR, ICR, OMR,
+  OBR, document imaging and PDF conversion technologies into various applications
+  for server, desktop, mobile, MFP or other devices.", descriptionRU: "Инструментарий
+  разработчика для интеграции технологий потокового ввода данных и обработки документов
+  в независимые приложения.", descriptionJA: "ABBYYの最先端の文書OCR、ICR、OMR、OBR、文書画像処理およびPDF変換技術をサーバー、デスクトップ、モバイル、MFPなどのデバイス向けの各種アプリケーションに統合する強力なOCR
+  SDKです。", buttonUrl: "https://www.abbyy.com/ocr-sdk/", buttonUrlRU: "https://www.abbyy.com/ru-ru/ocr-sdk/",
+  buttonUrlJA: "https://www.abbyy.com/ja-jp/ocr-sdk/", buttonText: "More Info",
+  buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["Mobile Capture"],
+  card: { image: "https://support.abbyy.com/hc/article_attachments/360009429320/mobilecapture-77x77.svg",
+  name: "ABBYY Mobile Capture", family: "ABBYY Mobile Capture", description: "Mobile
+  Capture is an SDK that helps you create smooth customer self-service experiences
+  with automatic data capture within your mobile app, providing real-time recognition
+  and capturing photos of documents for back-end processing.", descriptionRU: "Mobile
+  Capture – универсальный инструмент для разработчика, который позволяет встраивать
+  в мобильные приложения и клиенты функции автоматического захвата изображений
+  документов и распознавания текста.", descriptionJA: "Mobile Captureは、顧客に向けてスムーズなセルフサービス体験を提供する上で、助けとなってくれるソフトウェア開発キット（SDK）です。このツールは、モバイルアプリ内にある自動データキャプチャを活用します。このSDKを搭載することで、リアルタイム認識やバックエンド業務に必要な文書の写真をキャプチャすることができるようになります。",
+  buttonUrl: "https://www.abbyy.com/mobile-capture-sdk/", buttonUrlRU: "https://www.abbyy.com/ru-ru/mobile-capture-sdk/",
+  buttonUrlJA: "https://www.abbyy.com/ja-jp/mobile-capture-sdk/", buttonText: "More
+  Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["FlexiCapture
+  Engine 12"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001342639/rp-fce-icon.svg",
+  name: "ABBYY FlexiCapture Engine", family: "ABBYY FlexiCapture Engine", description:
+  "Comprehensive data capture SDK for integrating industry-leading data and document
+  capture, forms and invoice processing and classification technologies into server,
+  desktop and mobile applications.", descriptionRU: "Инструментарий разработчика
+  для интеграции технологий потокового ввода данных и обработки документов в независимые
+  приложения.", descriptionJA: "ABBYY FlexiCapture Engine は、ABBYY のデータキャプチャSDK技術の最新世代を代表する存在です。
+  このソフトを使うことで、ソフトウェア開発者たちが、定型あるいは半構造化フォームや文書からデータを抽出するためのソリューションを素早く開発できるようになります。",
+  buttonUrl: "https://www.abbyy.com/data-capture-sdk/", buttonUrlRU: "https://www.abbyy.com/ru-ru/data-capture-sdk/",
+  buttonUrlJA: "https://www.abbyy.com/ja-jp/data-capture-sdk/", buttonText: "More
+  Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["Real-Time
+  Recognition SDK"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001342699/rp-rtr-icon.svg",
+  name: "ABBYY Real-Time Recognition SDK", family: "ABBYY Real-Time Recognition
+  SDK", description: "RTR SDK enables developers to add ‘point and capture’ approach
+  – text capture directly from the smartphone’s preview screen – to mobile apps
+  and offers a completely new user experience.", descriptionRU: "Инструментарий
+  разработчика для встраивания в мобильные приложения функции мгновенного распознавания
+  текста в видеопотоке.", descriptionJA: "RTR SDK enables developers to add ‘point
+  and capture’ approach – text capture directly from the smartphone’s preview screen
+  – to mobile apps and offers a completely new user experience.", buttonUrl: "https://www.abbyy.com/real-time-recognition-sdk/",
+  buttonUrlRU: "https://www.abbyy.com/ru-ru/real-time-recognition-sdk/", buttonUrlJA:
+  "https://www.abbyy.com/ja-jp/real-time-recognition-sdk/", buttonText: "More Info",
+  buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["Cloud OCR SDK"],
+  card: { image: "https://support.abbyy.com/hc/article_attachments/360001236120/rp-cloud-icon.svg",
+  name: "ABBYY Cloud OCR SDK", family: "ABBYY Cloud OCR SDK", description: "Cloud
+  based OCR Software Development Kit for software providers and integrators that
+  wish to extend their applications with OCR functionality via Web API.", descriptionRU:
+  "Cloud based OCR Software Development Kit for software providers and integrators
+  that wish to extend their applications with OCR functionality via Web API.",
+  descriptionJA: "Cloud based OCR Software Development Kit for software providers
+  and integrators that wish to extend their applications with OCR functionality
+  via Web API.", buttonUrl: "https://www.abbyy.com/cloud-ocr-sdk/", buttonUrlRU:
+  "https://www.abbyy.com/ru-ru/cloud-ocr-sdk/", buttonUrlJA: "https://www.abbyy.com/ja-jp/cloud-ocr-sdk/",
+  buttonText: "More Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } },
+  { label: ["ReceiptCapture"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001342639/rp-fce-icon.svg",
+  name: "ABBYY Receipt Capture SDK", family: "ABBYY Receipt Capture SDK", description:
+  "An easy-to-integrate technology that automatically extracts data from receipts.",
+  descriptionRU: "An easy-to-integrate technology that automatically extracts data
+  from receipts.", descriptionJA: "An easy-to-integrate technology that automatically
+  extracts data from receipts.", buttonUrl: "https://www.abbyy.com/", buttonUrlRU:
+  "https://www.abbyy.com/ru-ru/", buttonUrlJA: "https://www.abbyy.com/ja-jp/",
+  buttonText: "More Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } },
+  { label: ["Mobile SDK"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001342679/rp-mi-icon.svg",
+  name: "ABBYY Mobile Imaging SDK", family: "ABBYY Mobile Imaging SDK", description:
+  "The toolkit to analyze photos of documents captured with mobile devices to determine
+  whether they are suitable for OCR or enhance their visual quality.", descriptionRU:
+  "ABBYY Mobile Imaging SDK – удобный инструмент для разработчиков, который позволяет
+  встраивать технологии обработки изображений в мобильные приложения и клиенты.",
+  descriptionJA: "The toolkit to analyze photos of documents captured with mobile
+  devices to determine whether they are suitable for OCR or enhance their visual
+  quality.", buttonUrl: "https://www.abbyy.com/mobile-imaging-sdk/", buttonUrlRU:
+  "https://www.abbyy.com/ru-ru/mobile-imaging-sdk/", buttonUrlJA: "https://www.abbyy.com/ja-jp/mobile-imaging-sdk/",
+  buttonText: "More Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } },
+  { label: ["FlexiCapture SDK"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001342639/rp-fce-icon.svg",
+  name: "ABBYY FlexiCapture SDK", family: "ABBYY FlexiCapture SDK", description:
+  "Integrate data capture seamlessly into applications, allowing you to maintain
+  full control over document processing, extracted data, and document routing.",
+  descriptionRU: "Integrate data capture seamlessly into applications, allowing
+  you to maintain full control over document processing, extracted data, and document
+  routing.", descriptionJA: "Integrate data capture seamlessly into applications,
+  allowing you to maintain full control over document processing, extracted data,
+  and document routing.", buttonUrl: "https://www.abbyy.com/flexicapture-sdk/",
+  buttonUrlRU: "https://www.abbyy.com/ru-ru/flexicapture-sdk/", buttonUrlJA: "https://www.abbyy.com/flexicapture-sdk/",
+  buttonText: "More Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } },
+  { label: ["FlexiCapture Cloud"], card: { image: "https://support.abbyy.com/hc/article_attachments/360005378139/fccloud-77x77.svg",
+  name: "ABBYY FlexiCapture Cloud API", family: "ABBYY FlexiCapture Cloud API",
+  description: "FlexiCapture Cloud REST API allows enterprise customers, system
+  integrators, and ISVs to easily integrate FlexiCapture as a cloud data capture
+  service inside their systems.", descriptionRU: "FlexiCapture Cloud REST API allows
+  enterprise customers, system integrators, and ISVs to easily integrate FlexiCapture
+  as a cloud data capture service inside their systems.", descriptionJA: "FlexiCapture
+  Cloud REST API allows enterprise customers, system integrators, and ISVs to easily
+  integrate FlexiCapture as a cloud data capture service inside their systems.",
+  buttonUrl: "https://www.abbyy.com/flexicapture-cloud/", buttonUrlRU: "https://www.abbyy.com/flexicapture-cloud/",
+  buttonUrlJA: "https://www.abbyy.com/flexicapture-cloud/", buttonText: "More Info",
+  buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }, { label: ["FineReader Server
+  14"], card: { image: "https://support.abbyy.com/hc/article_attachments/360001341839/rp-fc-icon.svg",
+  name: "ABBYY FineReader Server", family: "ABBYY FineReader Server", description:
+  "Powerful server-based OCR service for automated document capture and PDF conversion
+  software.", descriptionRU: "Серверное решение для распознавания и конвертации
+  документов.", descriptionJA: "Powerful server-based OCR service for automated
+  document capture and PDF conversion software.", buttonUrl: "https://www.abbyy.com/finereader-server/",
+  buttonUrlRU: "https://www.abbyy.com/ru-ru/finereader-server/", buttonUrlJA: "https://www.abbyy.com/ja-jp/finereader-server/",
+  buttonText: "More Info", buttonTextRU: "Подробнее", buttonTextJA: "詳しくは" } }
+  ]
+</div>
